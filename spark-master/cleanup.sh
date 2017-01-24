@@ -1,3 +1,5 @@
 #!/bin/bash
-rm -rf pkg_bigtop
+apt-get purge -yqq spark-*
+
+rm -rf /usr/lib/spark
 
