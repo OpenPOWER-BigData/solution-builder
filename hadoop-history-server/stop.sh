@@ -1,4 +1,5 @@
 #!/bin/bash
-set -ex
+
+service hadoop-mapreduce-historyserver stop
 
 

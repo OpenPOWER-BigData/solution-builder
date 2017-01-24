@@ -1,3 +1,3 @@
 #!/bin/bash
-rm -rf pkg_bigtop
+apt-get purge -qqy hadoop-yarn-nodemanager 
 
