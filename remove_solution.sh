@@ -47,7 +47,7 @@ install_service(){
         echo "*** Service $service_name status: ***"
 	ssh $server "$service_name/status.sh $bd_user $bd_passwd" < /dev/null
 	scp -q common/* $server:~/$service
-#	ssh $server "$service_name/cleanup.sh $bd_user $bd_passwd" < /dev/null
+	ssh $server "$service_name/cleanup.sh $bd_user $bd_passwd" < /dev/null
 }
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7

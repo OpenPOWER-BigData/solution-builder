@@ -3,6 +3,10 @@
 input=$1
 
 #sudo apt-get install -y sshpass
+if [ -z $input ]; then 
+   echo "ERROR: missing argument, please add solution defintion file name"
+   exit 1
+fi
 
 init_ssh() {
   user_name=$1
