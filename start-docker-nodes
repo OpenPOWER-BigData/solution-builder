@@ -1,1 +1,0 @@
-docker run -d ubuntu_dev:16.04 bash -l -c "service ssh start;  while true; do sleep 1000; done"
