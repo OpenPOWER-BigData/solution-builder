@@ -25,7 +25,8 @@ install_service(){
        	server=root@$bd_ip
         
         echo "*** Service $service_name status: ***"
-	ssh $server "$service_name/status.sh" < /dev/null
+#	ssh $server "$service_name/status.sh" < /dev/null
+        ssh $server "bash -s" < $service_name/status.sh 
 }
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7

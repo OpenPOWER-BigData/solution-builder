@@ -22,14 +22,16 @@ remove_service(){
 	server=root@$bd_ip
         
 
-	ssh $server "$service_name/stop.sh" < /dev/null
+#	ssh $server "$service_name/stop.sh" < /dev/null
 	ssh $server "$service_name/cleanup.sh" < /dev/null
 	ssh $server rm -rf $service_name < /dev/null
     if [ ! -z $dep_service ] ; then
-              	ssh $server "$dep_service/stop.sh" < /dev/null
+#              	ssh $server "$dep_service/stop.sh" < /dev/null
                	ssh $server "$dep_service/cleanup.sh"     < /dev/null 	
 	 fi
 }
+
+./stop_solution.sh --sd $solution_def_file
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7 
 do 
