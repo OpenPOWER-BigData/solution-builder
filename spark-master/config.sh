@@ -4,6 +4,7 @@ NAMENODE=$1
 RESOURCEMANAGER=$2
 SPARK_MASTER=$3
 BD_USER=$4
+SERVICE_NAME=$5
 
 change_xml_element() {
     name=$1
@@ -22,26 +23,6 @@ add_element(){
     sed -i -e "/<\/configuration>/ s/.*/${C}\n&/" $xml_file
 }
 
-change_hdfs_dir(){
-    suffix=$1
-    option_name=$2
-
-    j=1
-    value=""
-    while read i
-    do
-        if [ -z $i ]; then continue; fi
-        dir_name="file:///hdd${j}/${suffix}"
-        if [ -z $value ]; then
-            value=${dir_name}
-        else
-            value=${value}","${dir_name}
-        fi
-        j=$[$j+1]
-    done < disk_list
-
-    change_xml_element $option_name $value "/etc/hadoop/conf/hdfs-site.xml"
-}
 
 change_spark_local_dir(){
     suffix=$1
@@ -59,19 +40,14 @@ change_spark_local_dir(){
         fi
         sudo mkdir -p ${dir_name}
         j=$[$j+1]
-    done < disk_list
-
+    done < $SERVICE_NAME/disk_list
     echo "export SPARK_LOCAL_DIRS=$value" >>/etc/spark/conf/spark-env.sh
 }
 
 
-if [ -f disk_list ]; then
-    ./prep_disks.sh
+if [ -f $SERVICE_NAME/disk_list ]; then
+    ./prep_disks.sh $SERVICE_NAME/disk_list
     chown -R hdfs:hadoop /hdd*
-
-    change_hdfs_dir "hdfs/name" "dfs.namenode.name.dir"
-    change_hdfs_dir "hdfs/data" "dfs.datanode.data.dir"
-
     change_spark_local_dir "spark/local"
     sudo chown -R spark:spark /hdd*/spark/*
     sudo chmod -R 1777 /hdd*/spark/*

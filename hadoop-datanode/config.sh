@@ -4,6 +4,7 @@ NAMENODE=$1
 RESOURCEMANAGER=$2
 SPARK_MASTER=$3
 BD_USER=$4
+SERVICE_NAME=$5
 
 change_xml_element() {
     name=$1
@@ -38,7 +39,7 @@ change_hdfs_dir(){
             value=${value}","${dir_name}
         fi
         j=$[$j+1]
-    done < disk_list
+    done < $SERVICE_NAME/disk_list
 
     change_xml_element $option_name $value "/etc/hadoop/conf/hdfs-site.xml"
 }
@@ -59,14 +60,14 @@ change_spark_local_dir(){
         fi
         sudo mkdir -p ${dir_name}
         j=$[$j+1]
-    done < disk_list
+    done < $SERVICE_NAME/disk_list
 
     echo "export SPARK_LOCAL_DIRS=$value" >>/etc/spark/conf/spark-env.sh
 }
 
 
-if [ -f disk_list ]; then
-    ./prep_disks.sh
+if [ -f $SERVICE_NAME/disk_list ]; then
+    ./prep_disks.sh $SERVICE_NAME/disk_list
     chown -R hdfs:hadoop /hdd*
 
     change_hdfs_dir "hdfs/name" "dfs.namenode.name.dir"
