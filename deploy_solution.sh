@@ -42,7 +42,7 @@ install_service(){
 
 	scp -qr $service_name $server:~/.
 	ssh $server "$service_name/install.sh $bd_user " < /dev/null
-	ssh $server "$service_name/config.sh $namenode $resourcemanager $sparkmaster $bd_user $bd_passwd " < /dev/null
+	ssh $server "$service_name/config.sh $namenode $resourcemanager $sparkmaster $bd_user $service_name" < /dev/null
 	ssh $server "$service_name/start.sh $bd_user $bd_passwd" < /dev/null
         echo "*** Service $service_name status: ***"
 	ssh $server "$service_name/status.sh $bd_user $bd_passwd" < /dev/null

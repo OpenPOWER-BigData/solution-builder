@@ -35,5 +35,10 @@ do
   echo "  Service Location="$f3
   echo "  Service User Name="$f4
   init_ssh root $f3 $rootPass
+  ssh -q root@$f3 exit < /dev/null
+  echo "testing ssh connection to IP root@$f3 ... result=$?"
   init_ssh $f4 $f3 $userPass
+  ssh -q $f4@$f3 exit < /dev/null
+  echo "testing ssh connection to IP $f4@$f3 ... result=$?"
+
 done < "$input"

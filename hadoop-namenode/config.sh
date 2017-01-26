@@ -1,9 +1,11 @@
 #!/bin/bash
-#set -ex
+set -ex
 NAMENODE=$1
 RESOURCEMANAGER=$2
 SPARK_MASTER=$3
 BD_USER=$4
+SERVICE_NAME=$5
+
 change_xml_element() {
     name=$1
     value=$2
@@ -37,16 +39,16 @@ change_hdfs_dir(){
             value=${value}","${dir_name}
         fi
         j=$[$j+1]
-    done < disk_list
+    done < $SERVICE_NAME/disk_list
 
     change_xml_element $option_name $value "/etc/hadoop/conf/hdfs-site.xml"
 }
 
 
 
-if [ -f disk_list ]; then
-    ./prep_disks.sh
-     chown -R hdfs:hadoop /hdd*
+if [ -f $SERVICE_NAME/disk_list ]; then
+    ./prep_disks.sh $SERVICE_NAME/disk_list
+    chown -R hdfs:hadoop /hdd*
     change_hdfs_dir "hdfs/name" "dfs.namenode.name.dir"
     change_hdfs_dir "hdfs/data" "dfs.datanode.data.dir"
 fi
