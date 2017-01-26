@@ -1,12 +1,8 @@
 #!/bin/bash
-rm -rf /usr/lib/hadoop
-apt-get purge -y hadoop*
-apt-get purge -y zookeeper*
-rm -rf /var/lib/hadoop-*
-rm -rf /etc/hadoop
+
 
 # Clean up mounts created by prep_disks.sh
-if [ -f disk_list ]; then
+if [ -f hadoop-datanode/disk_list ]; then
     cp /etc/fstab fstab.tmp
     mount > mount.tmp
     while read i
@@ -23,7 +19,7 @@ if [ -f disk_list ]; then
         # Unmount and remove mount point
         sudo umount ${mount_dir} -f
         sudo rm -rf ${mount_dir}
-    done < disk_list
+    done < hadoop-datanode/disk_list
 
     rm mount.tmp
     sudo mv fstab.tmp /etc/fstab

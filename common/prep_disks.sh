@@ -1,6 +1,6 @@
 #!/bin/bash
 # please populate the disk_list file with disk names
-set -ex
+#set -ex
 disk_list=$1
 if [ -f $disk_list ]; then
   echo "start"
