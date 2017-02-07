@@ -27,7 +27,7 @@ fi
 
 export HADOOP_PREFIX=/usr/lib/hadoop
 export HADOOP_HOME=$HADOOP_PREFIX
-export JAVA_HOME=` find /usr/ -name java-8-openjdk-*`
+export JAVA_HOME=`find /usr/lib/jvm -name java*1*8*openjdk-*`
 
 
 echo "export JAVA_HOME=$JAVA_HOME" |  tee -a  /etc/environment $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh $HADOOP_PREFIX/etc/hadoop/yarn-env.sh
@@ -76,6 +76,6 @@ add_element "yarn.resourcemanager.address" "$RESOURCEMANAGER:8032" "/etc/hadoop/
 add_element "yarn.resourcemanager.resource-tracker.address" "$RESOURCEMANAGER:8031" "/etc/hadoop/conf/yarn-site.xml"
 add_element "yarn.resourcemanager.scheduler.address" "$RESOURCEMANAGER:8030" "/etc/hadoop/conf/yarn-site.xml"
 add_element "dfs.namenode.datanode.registration.ip-hostname-check" "false" "/etc/hadoop/conf/hdfs-site.xml"
-echo "*                soft    nofile          100000" | sudo tee -a  /etc/security/limits.conf
-echo "*                hard    nofile          100000" | sudo tee -a  /etc/security/limits.conf
+echo "*                soft    nofile          100000" | tee -a  /etc/security/limits.conf
+echo "*                hard    nofile          100000" | tee -a  /etc/security/limits.conf
 touch hadoop_client_configured

@@ -1,5 +1,10 @@
 #!/bin/bash
-apt-get purge -qqy hadoop-hdfs-namenode 
+if [ -f UBUNTU ]; then
+ apt-get purge -qqy hadoop-hdfs-namenode 
+else
+ yum remove -f -q hadoop-hdfs-namenode
+fi 
+
 rm hdfs_configured
 if [ -f hadoop-namenode/disk_list ]; then
     cp /etc/fstab fstab.tmp

@@ -4,9 +4,14 @@
 rm hadoop_client_installed
 rm hadoop_client_configured
 rm -rf /usr/lib/hadoop
-apt-get purge -yqq hadoop_*
-apt-get purge -yqq zookeeper*.
-apt-get purge -yqq spark-*
+if [ -f UBUNTU ]; then
+ apt-get purge -yqq hadoop_*
+ apt-get purge -yqq zookeeper*.
+ apt-get purge -yqq spark-*
+else
+ rpm -qa | grep hadoop | xargs yum remove -y -q
+ rpm -qa | grep spark | xargs yum remove -y -q
+fi 
 rm -rf /var/lib/hadoop-*
 rm -rf /etc/spark
 rm -rf /var/lib/spark
