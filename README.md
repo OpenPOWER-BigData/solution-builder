@@ -2,18 +2,16 @@
 # OpenPOWER Performance Enablement Kit
 # Solution Builder - A Service Oriented Orchestrator
 
-### The goal of this project is build a modular but expandable soltuion orchestrator that get a solution up and running quickly with minimum intervention required in single node, docker nodes, virtual nodes, and multi nodes bare-metal environments. In additional, this project aim is to develop a framework that allows for easy repeatability and for sharing of complex, multi-service deployments.
+### The goal of this project is build a modular but expandable solution orchestrator that deploys a solution quickly with minimum intervention in single node, docker nodes, virtual nodes, and multi nodes bare-metal cluster. In additional, this project aim is to develop a framework that allows for easy repeatability and for sharing of complex, multi-service deployments.
 
 ### Key Features:
-- Deploy a service or collection of services (Solution) in a distributed fastion 
-- Configure
+- Deploy a service or collection of services (Solution) in a distributed fashion 
+- Configure 
 - Manage
 - Scale
 - Expandable
 - Shareable - i.e Application-specific knowledge
 - Repeatable
-- 
--
 ##### Suported platform:
 - Bare metal.
 - Docker container
@@ -32,13 +30,13 @@
 
 
 ##### A Brief Outline of scripts and files included in this project and their function follows:
--   solution definition file template - A Solution Definition file is a collection of services and their relationships, designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( Docker or VM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
--   deploy_solution.sh - Downloads, installs, configures, and starts all of the servicess defined in the solution definition file.
--	remove_solution.sh - Remove all servicess defined in the solution definition file.
--   start_solution.sh - Start all servicess defined in the solution definition file.
--   stop_solution.sh - Stop all servicess defined in the solution definition file.
--   solution_status.sh - Display status of all servicess defined in the solution definition file.
--	init_ssh_nodes.sh - A utiltiy script to set ssh passwordless connection to all the nodes defined in the solution definition file.
+-   **solution definition file template** - A Solution Definition file is a collection of services and their relationships, designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( Docker or VM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
+-   **deploy_solution.sh** - Downloads, installs, configures, and starts all of the servicess defined in the solution definition file.
+-	**remove_solution.sh** - Remove all servicess defined in the solution definition file.
+-   **start_solution.sh** - Start all servicess defined in the solution definition file.
+-   **stop_solution.sh** - Stop all servicess defined in the solution definition file.
+-   **solution_status.sh** - Display status of all servicess defined in the solution definition file.
+-	**init_ssh_nodes.sh** - A utiltiy script to set ssh passwordless connection to all the nodes defined in the solution definition file.
 
 ##### A Sample Solution - Apache Bigtop Orchestrator.
 - Java Open JDK 1.8 
