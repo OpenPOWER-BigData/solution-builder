@@ -18,12 +18,16 @@ init_ssh() {
   #ssh $user_name@$ip_address ls
 }
 
-
-echo -n " Please enter the root password for the cluser: "
-read rootPass
-echo -n " Please enter the user password for the cluser: "
-read userPass
-
+#stty_orig=`stty -g` # save original terminal setting.
+#stty -echo          # turn-off echoing.
+#echo -n " Please enter the root password for the cluster: "
+IFS= read -s  -p " Please enter the root password for the cluster: " rootPass
+printf "\n"
+#cho -n " Please enter the user password for the cluster: "
+IFS= read -s  -p " Please enter the solution's user password: " userPass
+#ead userPass
+#stty $stty_orig     # restore terminal setting.
+echo "Thanks"
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7 f8
 do 

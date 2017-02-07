@@ -22,6 +22,7 @@ echo "spark version = "$SPARK_VERSION
 if [ -z $SPARK_VERSION ] || [ -z $solution_def_file ]; then
     usage
 fi
+SERVICE_HOME_DIR=services
 
 install_service(){
 	service_name=$1
@@ -34,20 +35,19 @@ install_service(){
 	server=root@$bd_ip
         
         if [ ! -z $dep_service ] ; then
-	        scp -qr $dep_service $server:~/.
+	        scp -qr $SERVICE_HOME_DIR/$dep_service $server:~/.
               	ssh $server "$dep_service/install.sh $bd_user  $SPARK_VERSION" < /dev/null
                	ssh $server "$dep_service/config.sh $namenode $resourcemanager $sparkmaster $bd_user" < /dev/null
-#               	ssh $server "$dep_service/start.sh $bd_user $bd_passwd" < /dev/null
 	fi
 
-	scp -qr $service_name $server:~/.
+	scp -qr $SERVICE_HOME_DIR/$service_name $server:~/.
 	ssh $server "$service_name/install.sh $bd_user " < /dev/null
 	ssh $server "$service_name/config.sh $namenode $resourcemanager $sparkmaster $bd_user $service_name" < /dev/null
 	ssh $server "$service_name/start.sh $bd_user $bd_passwd" < /dev/null
         echo "*** Service $service_name status: ***"
 	ssh $server "$service_name/status.sh $bd_user $bd_passwd" < /dev/null
 	scp -q common/* $server:~/$service
-#	ssh $server "$service_name/cleanup.sh $bd_user $bd_passwd" < /dev/null
+
 }
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7

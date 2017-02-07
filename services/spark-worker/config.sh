@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+#set -ex
 NAMENODE=$1
 RESOURCEMANAGER=$2
 SPARK_MASTER=$3

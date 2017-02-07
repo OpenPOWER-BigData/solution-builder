@@ -24,7 +24,7 @@ stop_service(){
 	server=root@$bd_ip
         
         if [ ! -z $dep_service ] ; then
-	        scp -qr $dep_service $server:~/.
+#        scp -qr $dep_service $server:~/.
               	ssh $server "$dep_service/stop.sh" < /dev/null
 	fi
 
