@@ -1,11 +1,9 @@
 ![Alt text](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg)
 # OpenPOWER Performance Enablement Kit
 # Solution Builder - A Service Oriented Orchestrator
-#
-#
-#
+
 ### The goal of this project is build a modular but expandable soltuion orchestrator that get a solution up and running quickly with minimum intervention required in single node, docker nodes, virtual nodes, and multi nodes bare-metal environments. In additional, this project aim is to develop a framework that allows for easy repeatability and for sharing of complex, multi-service deployments.
-#
+
 ### Key Features:
 - Deploy a service or collection of services (Solution) in a distributed fastion 
 - Configure
@@ -16,18 +14,21 @@
 - Repeatable
 - 
 -
-##### Suported Nodes:
+##### Suported platform:
 - Bare metal.
 - Docker container
 - VM 
+##### Suported OS:
 - Ubuntu 
-- Fedora, Centos, and RHEL - TBD
-##### Supported Cluster
+- Fedora, Centos, and RHEL 
+##### Supported Cluster Type:
 - OpenPOWER
 - Intel 
 - Hybrid (x86 and OpenPower)
 - VMs and Docker
 - Cloud
+##### Installer Platform:
+- Any platform with SSH support
 
 
 ##### A Brief Outline of scripts and files included in this project and their function follows:
@@ -65,12 +66,18 @@
 
 ### Cluster prep
 - Creating User Account in All Nodes - 
-Example:
+Example for Ubuntu:
 ```
-sudo useradd myname -U -G sudo -m
-sudo passwd myname
+sudo useradd bd_user -U -G sudo -m
+sudo passwd bd_user
+```
+Example for RHEL/Centos/Fedora:
+```
+sudo useradd bd_user -U -G wheel -m
+sudo passwd bd_user
 ```
 IMPORTANT - The username must match service's username defined in the solution definition file 
+
 - Mapping the nodes - You have to edit hosts file in /etc/ folder on ALL nodes, specify the IP address of each system followed by their host names. Example
 ```
 # sudo vim /etc/hosts
@@ -80,6 +87,12 @@ Append the following lines in the /etc/hosts file.
 192.168.1.3 hadoop-slave-2
 .....
 .....
+```
+- RHEL bug workaround - default requiretty field in /etc/sudoers is problematic 
+Red Hat has acknowledged the problem nad it will be removed in future releases https://bugzilla.redhat.com/show_bug.cgi?id=1020147
+Workaround: Remove below field from /etc/sudoers on all nodes
+```
+Defaults requiretty
 ```
 ## Solution Prep
 ### Create a solution Definition File
