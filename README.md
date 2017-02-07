@@ -12,31 +12,34 @@
 - Expandable
 - Shareable - i.e Application-specific knowledge
 - Repeatable
+
 ##### Suported platform:
 - Bare metal.
 - Docker container
 - VM 
+
 ##### Suported OS:
 - Ubuntu 
 - Fedora, Centos, and RHEL 
+
 ##### Supported Cluster Type:
 - OpenPOWER
 - Intel 
 - Hybrid (x86 and OpenPower)
 - VMs and Docker
 - Cloud
+
 ##### Installer Platform:
 - Any platform with SSH support
-
 
 ##### A Brief Outline of scripts and files included in this project and their function follows:
 -   **solution definition file template** - A Solution Definition file is a collection of services and their relationships, designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( Docker or VM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
 -   **deploy_solution.sh** - Downloads, installs, configures, and starts all of the servicess defined in the solution definition file.
--	**remove_solution.sh** - Remove all servicess defined in the solution definition file.
+-	  **remove_solution.sh** - Remove all servicess defined in the solution definition file.
 -   **start_solution.sh** - Start all servicess defined in the solution definition file.
 -   **stop_solution.sh** - Stop all servicess defined in the solution definition file.
 -   **solution_status.sh** - Display status of all servicess defined in the solution definition file.
--	**init_ssh_nodes.sh** - A utiltiy script to set ssh passwordless connection to all the nodes defined in the solution definition file.
+-	  **init_ssh_nodes.sh** - A utiltiy script to set ssh passwordless connection to all the nodes defined in the solution definition file.
 
 ##### A Sample Solution - Apache Bigtop Orchestrator.
 - Java Open JDK 1.8 
