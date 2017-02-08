@@ -1,7 +1,8 @@
 ![Alt text](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg)
 ![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png)
 ![Alt Text](http://findicons.com/files/icons/1786/oxygen_refit/128/start_here_redhat.png)
-# H1 OpenPOWER Performance Enablement Kit
+# H1 
+OpenPOWER Performance Enablement Kit
 # Solution Builder - A Service Oriented Orchestrator
 
 ### The goal of this project is build a modular but expandable solution orchestrator that deploys a solution quickly with minimum intervention in single node, docker nodes, virtual nodes, and multi nodes bare-metal cluster. In additional, this project aim is to develop a framework that allows for easy repeatability and for sharing of complex, multi-service deployments.
