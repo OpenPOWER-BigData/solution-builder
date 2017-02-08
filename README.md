@@ -1,5 +1,5 @@
 ![Alt text](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg)
-![]https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwicz6H0m4HSAhUCLSYKHWDED6kQjRwIBQ&url=http%3A%2F%2Fwww.iconarchive.com%2Ftag%2Fubuntu-folder&psig=AFQjCNGywEvdgCAiZHxV7TQ2RxVNi-FGVw&ust=1486667972135149
+![Alt text](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwicz6H0m4HSAhUCLSYKHWDED6kQjRwIBQ&url=http%3A%2F%2Fwww.iconarchive.com%2Ftag%2Fubuntu-folder&psig=AFQjCNGywEvdgCAiZHxV7TQ2RxVNi-FGVw&ust=1486667972135149)
 # OpenPOWER Performance Enablement Kit
 # Solution Builder - A Service Oriented Orchestrator
 
