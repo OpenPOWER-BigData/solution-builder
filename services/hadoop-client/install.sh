@@ -57,6 +57,7 @@ fi
 service ntp start
 ufw disable
 ulimit -n 10000
+echo "downloading Apache Bigtop Stack ......."
 BIGTOP_BASE_URL="https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/COMPONENTS"
 	
 pkg_dir=$PWD/pkg_bigtop
@@ -68,7 +69,7 @@ if [ ! -d $pkg_dir  ] ; then
         unzip hadoop.zip; unzip spark.zip; find -name "*.rpm" -o -name "*.deb" | xargs -I{} mv {} .; rm -rf hadoop; rm -rf spark; rm -f *.zip
 fi
 
-
+echo "download complete ......."
 
 cd $pkg_dir
 if [ $ID = "ubuntu" ]; then

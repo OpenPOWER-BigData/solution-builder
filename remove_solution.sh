@@ -35,6 +35,7 @@ do
   ## Ignore lines start with "#"
   case $f1 in
         \#*) continue;;
+        "") continue;;
   esac
   echo "************************************** "
   echo "Service Name="$f1

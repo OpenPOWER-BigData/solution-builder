@@ -55,14 +55,16 @@ do
   ## Ignore lines start with "#"
   case $f1 in
         \#*) continue;;
+        "") continue;;
   esac
   echo "************************************** "
   echo "Service Name="$f1
   echo "  Required Service="$f2
   echo "  Service Location="$f3
   echo "  Service User Name="$f4
-  echo "  NameNode hostname="$f5
-  echo "  ResourceManager hostname="$f6
+  echo "  arg1="$f5
+  echo "  arg2="$f6
+  echo "  arg3="$f7
   echo "************************************** "
 install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7 
 done < "$solution_def_file"

@@ -2,7 +2,7 @@
 if [ -f UBUNTU ]; then
  apt-get purge -qqy hadoop-hdfs-namenode 
 else
- yum remove -f -q hadoop-hdfs-namenode
+ yum remove -y -q hadoop-hdfs-namenode
 fi 
 
 rm hdfs_configured

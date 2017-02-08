@@ -1,3 +1,7 @@
 #!/bin/bash
-rm zeppelin_0.6.2-1_all.deb
+if [ -f UBUNTU ]; then
+ apt-get purge -qqy zeppelin 
+else 
+ yum remove -y -q zeppelin
+fi
 

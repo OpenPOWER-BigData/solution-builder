@@ -33,6 +33,7 @@ do
   ## Ignore lines start with "#"
   case $f1 in
         \#*) continue;;
+        "") continue;;
   esac
   echo "************************************** "
 install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7 

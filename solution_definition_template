@@ -7,16 +7,28 @@
 # 4) Service's user name
 # 5) Configuration and connections values for the service, must be comma-separated.
 # Example:
+#################### Master node #############################
+#### Includes namenode, resourcemanager, and spark master services      ###
+#### Note: last three arguments must be the hostname of the master node ### 
 hadoop-namenode,hadoop-client,172.17.0.2,ubuntu,master,master,master
 hadoop-resourcemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
 spark-master,hadoop-client,172.17.0.2,ubuntu,master,master,master
+#################### Worker Node 1 #############################
+#### Includes datanode, nodemanager, and spark worker services          ###
+#### Note: last three arguments must be the hostname of the master node ### 
 hadoop-datanode,hadoop-client,172.17.0.3,ubuntu,master,master,master
 hadoop-nodemanager,hadoop-client,172.17.0.3,ubuntu,master,master,master
 spark-worker,hadoop-client,172.17.0.3,ubuntu,master,master,master
+#################### Worker Node 2 #############################
 hadoop-datanode,hadoop-client,172.17.0.4,ubuntu,master,master,master
 hadoop-nodemanager,hadoop-client,172.17.0.4,ubuntu,master,master,master
 spark-worker,hadoop-client,172.17.0.4,ubuntu,master,master,master
+#################### Worker Node 3 #############################
 hadoop-datanode,hadoop-client,172.17.0.5,ubuntu,master,master,master
 hadoop-nodemanager,hadoop-client,172.17.0.5,ubuntu,master,master,master
 spark-worker,hadoop-client,172.17.0.5,ubuntu,master,master,master
+#################### Apache Zeppelin Serivce  #####################
 #zeppelin,hadoop-client,172.17.0.6,ubuntu,master,master,master
+#################### Apache Hive Service  #########################
+#################### Apache Pig Service  #########################
+#################### Apache Tez Service  #########################
