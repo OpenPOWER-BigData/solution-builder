@@ -1,4 +1,4 @@
-<img style="float: left;" src="http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg">
+<img style="float:center;" src="http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg">
 #
 ![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png)
 ![Alt Text](http://findicons.com/files/icons/1786/oxygen_refit/128/start_here_redhat.png)
