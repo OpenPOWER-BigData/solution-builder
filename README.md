@@ -64,21 +64,9 @@ OpenPOWER Performance Enablement Kit
 Lets Start 
 ========
 ###Typical Deployment Flow
-```flow
-step1=>start: Cluster Preparation
-step2=>start: Install Node Preparation
-step3=>operation: Connect Installer node to the cluster
-step4=>operation: Deploy
-step1->step2->step3->step4
-```
+![Alt](https://github.com/OpenPOWER-BigData/solution-builder/blob/master/doc/deployment-flow.png)
 ###Solution Managment Flow
-```flow
-step5=>operation: Get Status of the Services
-step6=>operation: Modify
-step7=>operation: Stop Services 
-step8=>operation: Start Services  
-step5->step6->step7->step8
-```
+![Alt](https://github.com/OpenPOWER-BigData/solution-builder/blob/master/doc/solution_man.png)
 
 ### Cluster prep
 - Creating User Account in All Nodes
