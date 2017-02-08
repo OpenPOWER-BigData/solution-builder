@@ -1,3 +1,4 @@
+<img style="float: right;" src="http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg">
 ![Alt text](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg)
 #
 ![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png)
