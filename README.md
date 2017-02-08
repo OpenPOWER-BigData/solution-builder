@@ -1,5 +1,5 @@
 ![Alt text](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg)
-![Alt text](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwicz6H0m4HSAhUCLSYKHWDED6kQjRwIBQ&url=http%3A%2F%2Fwww.iconarchive.com%2Ftag%2Fubuntu-folder&psig=AFQjCNGywEvdgCAiZHxV7TQ2RxVNi-FGVw&ust=1486667972135149)
+![Alt text](https://www.google.com/imgres?imgurl=http%3A%2F%2Fbernardosbagofbeans.com%2Fwp-content%2Fuploads%2F2016%2F04%2Fubuntu-logo.jpg&imgrefurl=http%3A%2F%2Fbernardosbagofbeans.com%2F2016%2F04%2Finstalling-sentrifugo-ubuntu-14-04-lts-trusty-tahr.html&docid=cdxc388mEGDzRM&tbnid=ZvHHNQ-zEHO_BM%3A&vet=1&w=1024&h=768&bih=1073&biw=2133&q=ubuntu&ved=0ahUKEwj5raTMnIHSAhWDMSYKHU1IB1wQMwh6KAcwBw&iact=mrc&uact=8)
 # OpenPOWER Performance Enablement Kit
 # Solution Builder - A Service Oriented Orchestrator
 
