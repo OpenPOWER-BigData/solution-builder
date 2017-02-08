@@ -1,6 +1,6 @@
 ![Alt](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg#right)
 #
-![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png)
+![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png#center)
 ![Alt Text](http://findicons.com/files/icons/1786/oxygen_refit/128/start_here_redhat.png)
 # OpenPOWER Performance Enablement Kit
 ## Solution Builder - A Service Oriented Orchestrator
