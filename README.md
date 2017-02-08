@@ -1,8 +1,9 @@
 ![Alt](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg#right)
-#
+
 ![Alt text](http://findicons.com/files/icons/2278/operating_systems/256/ubuntu.png#center)
 ![Alt Text](http://findicons.com/files/icons/1786/oxygen_refit/128/start_here_redhat.png)
-# OpenPOWER Performance Enablement Kit
+OpenPOWER Performance Enablement Kit
+====================================
 ## Solution Builder - A Service Oriented Orchestrator
 
 ### The goal of this project is build a modular but expandable solution orchestrator that deploys a solution quickly with minimum intervention in single node, docker nodes, virtual nodes, and multi nodes bare-metal cluster. In additional, this project aim is to develop a framework that allows for easy repeatability and for sharing of complex, multi-service deployments.
@@ -33,7 +34,7 @@
 - Cloud
 
 ##### Installer Platform:
-- Any platform with SSH support
+- Any Linux or OS X platform with SSH support
 
 ##### A Brief Outline of scripts and files included in this project and their function follows:
 -   **solution definition file template** - A Solution Definition file is a collection of services and their relationships, designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( Docker or VM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
@@ -59,17 +60,29 @@
 - openssl
 - snappy
 - lzo
-#
-#
-# Lets Start 
-### Installer requirements 
-- Any Linux, Windows, OS x system
-  * Must have ssh and sshpass installed
-  * sshpass for Mac OS x - https://fauxzen.com/installing-sshpass-os-x/   
-- OpenPower or x86 architecture 
+
+Lets Start 
+========
+###Typical Deployment Flow
+```flow
+step1=>start: Cluster Preparation
+step2=>start: Install Node Preparation
+step3=>operation: Connect Installer node to the cluster
+step4=>operation: Deploy
+step1->step2->step3->step4
+```
+###Solution Managment Flow
+```flow
+step5=>operation: Get Status of the Services
+step6=>operation: Modify
+step7=>operation: Stop Services 
+step8=>operation: Start Services  
+step5->step6->step7->step8
+```
 
 ### Cluster prep
-- Creating User Account in All Nodes - 
+- Creating User Account in All Nodes
+
 Example for Ubuntu:
 ```
 sudo useradd bd_user -U -G sudo -m
@@ -98,5 +111,13 @@ Workaround: Remove below field from /etc/sudoers on all nodes
 ```
 Defaults requiretty
 ```
+###Installer Node
+####Node Requirements
+- Any Linux or OS x system
+  * Must have ssh and sshpass installed
+  * sshpass for Mac OS x - https://fauxzen.com/installing-sshpass-os-x/   
+- OpenPower or x86 architecture 
+####Installer Node Setup
+
 ## Solution Prep
 ### Create a solution Definition File
