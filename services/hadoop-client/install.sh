@@ -55,7 +55,13 @@ if [ -f hadoop_client_installed ] ; then
 fi
 
 service ntp start
-ufw disable
+if [ -f UBUNTU ]; then
+ ufw disable
+else
+ service firewalld stop
+ systemctl disable firewalld 
+fi
+
 ulimit -n 10000
 echo "downloading Apache Bigtop Stack ......."
 BIGTOP_BASE_URL="https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/COMPONENTS"
