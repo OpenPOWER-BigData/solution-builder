@@ -37,13 +37,14 @@ OpenPOWER Performance Enablement Kit
 - Any Linux or OS X platform with SSH support
 
 ##### A Brief Outline of scripts and files included in this project and their function follows:
--   **solution definition file template** - A Solution Definition file is a collection of services and their relationships, designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( Docker or VM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
+-   **solution_definition_template** - A Solution Definition file defines a collection of services and their relationships. It is designed to give you an entire working deployment in one easy to use collection. It can be use in two distinct ways. One is to use it locally ( using Docker or KVM cluster) from your computer, which is useful to initially ensure that your solution works and for experimenting. After you are satisfied with the solution definition file, you can push it to github where it will be available to you and others.
 -   **deploy_solution.sh** - Downloads, installs, configures, and starts all of the servicess defined in the solution definition file.
 -	  **remove_solution.sh** - Remove all servicess defined in the solution definition file.
 -   **start_solution.sh** - Start all servicess defined in the solution definition file.
 -   **stop_solution.sh** - Stop all servicess defined in the solution definition file.
 -   **solution_status.sh** - Display status of all servicess defined in the solution definition file.
 -	  **init_ssh_nodes.sh** - A utiltiy script to set ssh passwordless connection to all the nodes defined in the solution definition file.
+- **services** - Conllection of services contributed by their domanin expert.
 
 ##### A Sample Solution - Apache Bigtop Orchestrator.
 - Java Open JDK 1.8 
@@ -81,8 +82,10 @@ Example for RHEL/Centos/Fedora:
 sudo useradd bd_user -U -G wheel -m
 sudo passwd bd_user
 ```
-IMPORTANT - The username must match service's username defined in the solution definition file 
-
+> IMPORTANT - The username must match service's username defined in the solution definition file 
+- Ensure the root password is the same on all cluster  nodes
+- Ensure the username (i.e. bd_user) has the same password on all cluster node.
+- Ensure SSH daemon is running on all the nodes.
 - Mapping the nodes - You have to edit hosts file in /etc/ folder on ALL nodes, specify the IP address of each system followed by their host names. Example
 ```
 # sudo vim /etc/hosts
@@ -99,13 +102,18 @@ Workaround: Remove below field from /etc/sudoers on all nodes
 ```
 Defaults requiretty
 ```
-###Installer Node
+###Installer Node 
 ####Node Requirements
 - Any Linux or OS x system
   * Must have ssh and sshpass installed
   * sshpass for Mac OS x - https://fauxzen.com/installing-sshpass-os-x/   
 - OpenPower or x86 architecture 
 ####Installer Node Setup
+- download Solution Builder
+: git clone https://github.com/OpenPOWER-BigData/solution-builder.git 
+- Use the solution_definition_template file to build your own custom solution
+- Add/remove services as needed - Please refer to section "Create a New Solution"
+- Example of solution definition file for deploying Apache Bigtop 1.2
 
 ## Solution Prep
 ### Create a solution Definition File
