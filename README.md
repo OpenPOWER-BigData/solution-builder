@@ -110,10 +110,43 @@ Defaults requiretty
 - OpenPower or x86 architecture 
 ####Installer Node Setup
 - download Solution Builder
-: git clone https://github.com/OpenPOWER-BigData/solution-builder.git 
+> git clone https://github.com/OpenPOWER-BigData/solution-builder.git 
 - Use the solution_definition_template file to build your own custom solution
 - Add/remove services as needed - Please refer to section "Create a New Solution"
 - Example of solution definition file for deploying Apache Bigtop 1.2
-
+```
+# A Solution Definition File is a collection of services and their relationships, designed to
+# give you an entire deployment in one easy to use step. Defines the topology of the solutions.
+# Each line represent a service and is consist of comma-separated fields:
+# 1) Service Name
+# 2) Aditional required service on the same node
+# 3) Target node's IP/Hostname
+# 4) Service's user (not root) 
+# 5) Configuration and connections values for the service, must be comma-separated.
+# Example: Apache Bigtop Deployment
+#################### Master node #############################
+#### Hadoop master node includes namenode, resourcemanager, and spark-master services      ###
+#### All Hadoop services have depdency on hadoop-client service
+#### Note: last three arguments must be the hostname of the master node                    ### 
+hadoop-namenode,hadoop-client,172.17.0.2,bd_user,master,master,master
+hadoop-resourcemanager,hadoop-client,172.17.0.2,bd_user,master,master,master
+spark-master,hadoop-client,172.17.0.2,bd_user,master,master,master
+#################### Worker Node 1 #############################
+#### Includes datanode, nodemanager, and spark worker services          ###
+#### Note: last three arguments must be the hostname of the master node ### 
+hadoop-datanode,hadoop-client,172.17.0.3,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.3,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.3,bd_user,master,master,master
+#################### Worker Node 2 #############################
+hadoop-datanode,hadoop-client,172.17.0.4,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.4,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.4,bd_user,master,master,master
+#################### Worker Node 3 #############################
+hadoop-datanode,hadoop-client,172.17.0.5,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.5,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.5,bd_user,master,master,master
+#################### Apache Zeppelin Serivce  #####################
+zeppelin,hadoop-client,172.17.0.6,bd_user,master,master,master
+```
 ## Solution Prep
 ### Create a solution Definition File
