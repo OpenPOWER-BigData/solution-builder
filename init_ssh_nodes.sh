@@ -25,7 +25,7 @@ init_ssh() {
 
 IFS= read -s  -p " Please enter the root password for the cluster: " rootPass
 printf "\n"
-IFS= read -s  -p " Please enter the solution's user password: " userPass
+IFS= read -s  -p " Please enter password of the solution user: " userPass
 
 echo "Thanks"
 

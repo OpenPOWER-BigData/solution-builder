@@ -1,14 +1,14 @@
 #!/bin/bash
 #set -ex
-
-while (( "$#" )); do
-    case $1 in
-        --spark-version ) 
+for i in "$@"
+do
+    case $i in
+        --spark-version )
            SPARK_VERSION=$2
            shift
            ;;
         * )
-        break ;;
+        shift;;
     esac
     shift
 done

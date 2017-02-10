@@ -20,9 +20,10 @@ add_element(){
     sed -i -e "/<\/configuration>/ s/.*/${C}\n&/" $xml_file
 }
 
-sed -i -e 's|yarn-client|spark://$SPARK_MASTER:7077|g' /etc/zeppelin/conf/zeppelin-env.sh
+sed -i -e 's|yarn-client|spark://$(SPARK_MASTER):7077|g' /etc/zeppelin/conf/zeppelin-env.sh
 sed -i -e 's|ZEPPELIN_PORT=8080|ZEPPELIN_PORT=8888|g' /etc/zeppelin/conf/zeppelin-env.sh
 echo "export ZEPPELIN_JAVA_OPTS=\"-Dspark.executor.memory=1G -Dspark.cores.max=4\"" | tee -a /etc/zeppelin/conf/zeppelin-env.sh
+echo "export MASTER=spark://$SPARK_MASTER:7077"  |tee -a /etc/zeppelin/conf/zeppelin-env.sh
 cd ~ 
 
 sudo -u hdfs hdfs dfs -mkdir /user/zeppelin
