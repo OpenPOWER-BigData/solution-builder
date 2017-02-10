@@ -1,27 +1,24 @@
 #!/bin/bash
 usage() {
-    echo "usage: $(basename $0) --sd <solution definition file name> --spark-version <spark version>"
-    echo "    where:"
-    echo "        <spark version> is one of [\"1.6.2\", \"2.1\"]"
+    echo "usage: $(basename $0) --sd <solution definition file name> "
     exit 1;
 }
 
-while [ ! -z $4 ]; do
-    case "$1" in
-        --sd ) solution_def_file=$2 ;;
-        * ) usage ;;
-    esac
-    case "$3" in
-        --spark-version ) SPARK_VERSION=$4 ;;
-        * ) usage ;;
+while (( "$#" )); do
+    case $1 in
+        --sd ) 
+           solution_def_file=$2 
+           shift
+           ;;
+        * )
+        break ;;
     esac
     shift
 done
+
 echo "solution definition file="$solution_def_file
-echo "spark version = "$SPARK_VERSION
-if [ -z $SPARK_VERSION ] || [ -z $solution_def_file ]; then
-    usage
-fi
+solution_args=$@
+
 SERVICE_HOME_DIR=services
 
 install_service(){
@@ -29,23 +26,23 @@ install_service(){
         dep_service=$2
 	bd_ip=$3
 	bd_user=$4
-	namenode=$5
-	resourcemanager=$6
-	sparkmaster=$7
+	service_arg1=$5
+	service_arg2=$6
+	service_arg3=$7
 	server=root@$bd_ip
         
         if [ ! -z $dep_service ] ; then
 	        scp -qr $SERVICE_HOME_DIR/$dep_service $server:~/.
-              	ssh $server "$dep_service/install.sh $bd_user  $SPARK_VERSION" < /dev/null
-               	ssh $server "$dep_service/config.sh $namenode $resourcemanager $sparkmaster $bd_user" < /dev/null
+              	ssh $server "$dep_service/install.sh $bd_user  $solution_args" < /dev/null
+               	ssh $server "$dep_service/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
 	fi
 
 	scp -qr $SERVICE_HOME_DIR/$service_name $server:~/.
-	ssh $server "$service_name/install.sh $bd_user " < /dev/null
-	ssh $server "$service_name/config.sh $namenode $resourcemanager $sparkmaster $bd_user $service_name" < /dev/null
-	ssh $server "$service_name/start.sh $bd_user $bd_passwd" < /dev/null
+	ssh $server "$service_name/install.sh $bd_user $solution_args" < /dev/null
+	ssh $server "$service_name/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $service_name $solution_args" < /dev/null
+	ssh $server "$service_name/start.sh $bd_user " < /dev/null
         echo "*** Service $service_name status: ***"
-	ssh $server "$service_name/status.sh $bd_user $bd_passwd" < /dev/null
+	ssh $server "$service_name/status.sh $bd_user " < /dev/null
 	scp -q common/* $server:~/$service
 
 }
@@ -66,7 +63,7 @@ do
   echo "  arg2="$f6
   echo "  arg3="$f7
   echo "************************************** "
-install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7 
+install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7
 done < "$solution_def_file"
 ./solution_status.sh --sd $solution_def_file
 

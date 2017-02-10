@@ -7,29 +7,35 @@
 # 4) Service's user (not root) 
 # 5) Configuration and connections values for the service, must be comma-separated.
 # Example: Apache Bigtop Deployment
-#################### Master node #############################
+#################### Master node #############################################################
 #### Hadoop master node includes namenode, resourcemanager, and spark-master services      ###
-#### All Hadoop services have depdency on hadoop-client service
-#### Note: last three arguments must be the hostname of the master node                    ### 
-hadoop-namenode,hadoop-client,172.17.0.2,bd_user,master,master,master
-hadoop-resourcemanager,hadoop-client,172.17.0.2,bd_user,master,master,master
-spark-master,hadoop-client,172.17.0.2,bd_user,master,master,master
-#################### Worker Node 1 #############################
-#### Includes datanode, nodemanager, and spark worker services          ###
-#### Note: last three arguments must be the hostname of the master node ### 
-hadoop-datanode,hadoop-client,172.17.0.3,bd_user,master,master,master
-hadoop-nodemanager,hadoop-client,172.17.0.3,bd_user,master,master,master
-spark-worker,hadoop-client,172.17.0.3,bd_user,master,master,master
+#### All Hadoop services have depdency on hadoop-client service                            ###
+#### Next three arguments must be the hostname of the master node                          ###
+##############################################################################################
+hadoop-namenode,hadoop-client,172.17.0.2,ubuntu,master,master,master
+hadoop-resourcemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
+spark-master,hadoop-client,172.17.0.2,ubuntu,master,master,master
+
+#################### Worker Node 1 ###########################################################
+#### Includes datanode, nodemanager, and spark worker services                             ###
+#### Next three arguments must be the hostname of the master node                          ### 
+##############################################################################################
+hadoop-datanode,hadoop-client,172.17.0.3,ubuntu,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.3,ubuntu,master,master,master
+spark-worker,hadoop-client,172.17.0.3,ubuntu,master,master,master
+
 #################### Worker Node 2 #############################
-hadoop-datanode,hadoop-client,172.17.0.4,bd_user,master,master,master
-hadoop-nodemanager,hadoop-client,172.17.0.4,bd_user,master,master,master
-spark-worker,hadoop-client,172.17.0.4,bd_user,master,master,master
+hadoop-datanode,hadoop-client,172.17.0.4,ubuntu,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.4,ubuntu,master,master,master
+spark-worker,hadoop-client,172.17.0.4,ubuntu,master,master,master
+
 #################### Worker Node 3 #############################
-hadoop-datanode,hadoop-client,172.17.0.5,bd_user,master,master,master
-hadoop-nodemanager,hadoop-client,172.17.0.5,bd_user,master,master,master
-spark-worker,hadoop-client,172.17.0.5,bd_user,master,master,master
+hadoop-datanode,hadoop-client,172.17.0.5,ubuntu,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.5,ubuntu,master,master,master
+spark-worker,hadoop-client,172.17.0.5,ubuntu,master,master,master
+
 #################### Apache Zeppelin Serivce  #####################
-zeppelin,hadoop-client,172.17.0.6,bd_user,master,master,master
+zeppelin,hadoop-client,172.17.0.6,ubuntu,master,master,master
 #################### Apache Hive Service  #########################
 # TBD
 #################### Apache Pig Service  #########################

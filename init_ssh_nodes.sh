@@ -1,15 +1,19 @@
 #!/bin/bash
 #set -ex
+usage() {
+    echo "usage: $(basename $0) --sd <solution definition file name> "
+    exit 1;
+}
 
-while [ ! -z $2 ]; do
+while (( $# >= 0 )); do
     case "$1" in
-        --sd ) solution_def_file=$2 ;;
-        * ) usage ;;
+        --sd ) solution_def_file=$2 
+        break;
+        ;;
+        * )    usage ;;
     esac
-    shift
+    usage
 done
-echo "solution definition file="$solution_def_file
-
 init_ssh() {
   user_name=$1
   ip_address=$2

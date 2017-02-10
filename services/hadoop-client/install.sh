@@ -1,7 +1,17 @@
 #!/bin/bash
 #set -ex
-BD_USER=$1
-SPARK_VERSION=$2
+
+while (( "$#" )); do
+    case $1 in
+        --spark-version ) 
+           SPARK_VERSION=$2
+           shift
+           ;;
+        * )
+        break ;;
+    esac
+    shift
+done
 SPARK="spark"
 
 if [ -f /etc/os-release ]; then
