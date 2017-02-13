@@ -1,10 +1,11 @@
 #!/bin/bash
 #set -ex
+echo "deploy arguemnt="$@
 for i in "$@"
 do
     case $i in
         --spark-version )
-           SPARK_VERSION=$2
+           SPARK_VERSION=$1
            shift
            ;;
         * )
@@ -73,17 +74,16 @@ else
 fi
 
 ulimit -n 10000
-echo "downloading Apache Bigtop Stack ......."
+echo "downloading Apache Bigtop Stack (Hadoop 2.7.3 and Spark $SPARK_VERSION) ......."
 BIGTOP_BASE_URL="https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/COMPONENTS"
 	
 pkg_dir=$PWD/pkg_bigtop
-if [ ! -d $pkg_dir  ] ; then
-	mkdir $pkg_dir; cd $_
+#if [ ! -d $pkg_dir  ] ; then
+	rm -rf $pkg_dir; mkdir $pkg_dir; cd $_
 	wget -qO hadoop.zip $BIGTOP_BASE_URL=hadoop,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/*zip*/archive.zip
 	wget -qO spark.zip $BIGTOP_BASE_URL=$SPARK,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/*zip*/archive.zip
-        #unzip hadoop.zip; unzip spark.zip; mv `find -name "*.rpm" -o -name "*.deb"` .; rm -rf hadoop; rm -rf spark; rm -f *.zip
         unzip hadoop.zip; unzip spark.zip; find -name "*.rpm" -o -name "*.deb" | xargs -I{} mv {} .; rm -rf hadoop; rm -rf spark; rm -f *.zip
-fi
+#fi
 
 echo "download complete ......."
 

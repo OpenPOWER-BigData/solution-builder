@@ -1,7 +1,8 @@
 #Service Name,target node IP address, target node BD user name, namenode hostname, resourcemanager hostname, spark-master hostname 
-hadoop-namenode,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
-hadoop-resourcemanager,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
-hadoop-datanode,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
-hadoop-nodemanager,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
-spark-master,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
-spark-worker,hadoop-client,129.33.248.15,bd_user,siteoxnode2,siteoxnode2,siteoxnode2
+hadoop-namenode,hadoop-client,172.17.0.2,ubuntu,master,master,master
+hadoop-resourcemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
+hadoop-datanode,hadoop-client,172.17.0.2,ubuntu,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
+spark-master,hadoop-client,172.17.0.2,ubuntu,master,master,master
+spark-worker,hadoop-client,172.17.0.2,ubuntu,master,master,master
+zeppelin,hadoop-client,172.17.0.2,ubuntu,master,master,master
