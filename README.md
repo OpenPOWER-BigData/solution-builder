@@ -171,7 +171,7 @@ ssh ubuntu@172.17.0.2 "bash -s" < test/hadoopTest.sh
 ```
 ./stop_solution.sh --sd solution_def_bigtop
 ```
-### Start Service
+### Start Services
 ```
 ./start_solution.sh --sd solution_def_bigtop
 ```
