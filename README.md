@@ -82,7 +82,7 @@ Example for RHEL/Centos/Fedora:
 sudo useradd bd_user -U -G wheel -m
 sudo passwd bd_user
 ```
-> IMPORTANT - The username must match service's username defined in the solution definition file 
+**IMPORTANT - The username must match service's username defined in the solution definition file **
 - Ensure the root password is the same on all cluster  nodes
 - Ensure the username (i.e. bd_user) has the same password on all cluster node.
 - Ensure SSH daemon is running on all the nodes.
@@ -114,7 +114,7 @@ Defaults requiretty
 - Use the solution_definition_template file to build your own custom solution
 - Add/remove services as needed - Please refer to section "Create a New Solution"
 - Example of solution definition file for deploying Apache Bigtop 1.2
-```
+```code
 # A Solution Definition File is a collection of services and their relationships, designed to
 # give you an entire deployment in one easy to use step. Defines the topology of the solutions.
 # Each line represent a service and is consist of comma-separated fields:
@@ -148,5 +148,30 @@ spark-worker,hadoop-client,172.17.0.5,bd_user,master,master,master
 #################### Apache Zeppelin Serivce  #####################
 zeppelin,hadoop-client,172.17.0.6,bd_user,master,master,master
 ```
-## Solution Prep
-### Create a solution Definition File
+## Solution Management 
+### Deployment
+- deploy_solution.sh --sd <solution definition file name> {solution level arguments}. Solution level arguments are vsisble to all install.sh and config.sys scripts
+```
+./deploy_solution.sh --sd solution_definition_template --spark-version 2.1
+```
+### Status of Services
+```
+./solution_status.sh --sd solution_definition_template
+```
+### Test Hadoop/Spark Services
+- Test Spark deployment using ssh: **ssh {solution user name}:{namenode IP address} "bash -s" < test/sparkTest.sh**
+```
+ssh ubuntu@172.17.0.2 "basg -s < test/sparkTest.sh"
+```
+- Test Hadoop Deployment: **ssh {solution user name}:{namenode IP address} "bash -s" < test/hadoopTest.sh**
+```
+ssh ubuntu@172.17.0.2 "bash -s" < test/hadoopTest.sh 
+```
+### Stop Services
+```
+./stop_solution.sh --sd solution_def_bigtop
+```
+### Start Service
+```
+./start_solution.sh --sd solution_def_bigtop
+```
