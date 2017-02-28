@@ -29,12 +29,12 @@ case ${ID}-${VERSION_ID} in
         touch UBUNTU
         apt-get install -f -y
         apt-get update -qqy
-        apt-get install -qqy python wget fuse openssl liblzo2-2 openjdk-8-jdk unzip netcat-openbsd apt-utils openssh-server libsnappy1v5 libsnappy-java ntp cpufrequtils
+        apt-get install -qqy python wget fuse openssl liblzo2-2 openjdk-8-jdk unzip netcat-openbsd apt-utils openssh-server libsnappy1v5 libsnappy-java ntp cpufrequtils curl
       ;;
       *)
         BIGTOP_OS_TYPE="fedora-25"
         yum -y -q update
-        yum install -y -q sudo hostname gzip wget vim java-1.8.0-openjdk-devel openssl zlib compat-libstdc++-33 snappy openssh-clients openssh-server initscripts nc unzip fuse
+        yum install -y -q sudo hostname gzip wget vim java-1.8.0-openjdk-devel openssl zlib compat-libstdc++-33 snappy openssh-clients openssh-server initscripts nc unzip fuse curl
         NOARCH="noarch"
           
 esac

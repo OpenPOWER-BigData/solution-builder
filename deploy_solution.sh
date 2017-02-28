@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -ex
 usage() {
     echo "usage: $(basename $0) --sd <solution definition file name> "
     exit 1;
@@ -31,7 +32,7 @@ install_service(){
 	service_arg3=$7
 	server=root@$bd_ip
         
-        if [ ! -z $dep_service ] ; then
+        if [ ! $dep_service="none" ] ; then
 	        scp -qr $SERVICE_HOME_DIR/$dep_service $server:~/.
               	ssh $server "$dep_service/install.sh $bd_user  $solution_args" < /dev/null
                	ssh $server "$dep_service/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
@@ -63,6 +64,9 @@ do
   echo "  arg2="$f6
   echo "  arg3="$f7
   echo "************************************** "
+  if [ -z $f2 ]; then 
+     f2="None"
+  fi
 install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7
 done < "$solution_def_file"
 ./solution_status.sh --sd $solution_def_file

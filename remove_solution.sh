@@ -23,7 +23,7 @@ remove_service(){
         
 	ssh $server "$service_name/cleanup.sh" < /dev/null
 	ssh $server rm -rf $service_name < /dev/null
-        if [ ! -z $dep_service ] ; then
+        if [ ! $dep_service="none" ] ; then
                	ssh $server "$dep_service/cleanup.sh"     < /dev/null 	
 	 fi
 }
