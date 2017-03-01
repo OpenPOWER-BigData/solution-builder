@@ -1,6 +1,6 @@
 ![Alt](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg#right)
 
-OpenPOWER Performance Enablement Kit
+OpenPOWER Solution Enablement Kit
 ====================================
 ## Solution Builder - A Service Oriented Orchestrator
 
