@@ -32,7 +32,7 @@ install_service(){
 	service_arg3=$7
 	server=root@$bd_ip
         
-        if [ ! $dep_service="none" ] ; then
+        if [ "$dep_service" != "none" ] ; then
 	        scp -qr $SERVICE_HOME_DIR/$dep_service $server:~/.
               	ssh $server "$dep_service/install.sh $bd_user  $solution_args" < /dev/null
                	ssh $server "$dep_service/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
