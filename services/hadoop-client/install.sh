@@ -23,6 +23,7 @@ else
 	    VERSION_ID=7
     fi
 fi
+export LC_ALL=C
 case ${ID}-${VERSION_ID} in
       ubuntu-*)
         BIGTOP_OS_TYPE="ubuntu-16.04"  
@@ -36,7 +37,7 @@ case ${ID}-${VERSION_ID} in
         yum -y -q update
         yum install -y -q sudo hostname gzip wget vim java-1.8.0-openjdk-devel openssl zlib compat-libstdc++-33 snappy openssh-clients openssh-server initscripts nc unzip fuse curl
         NOARCH="noarch"
-          
+       
 esac
 jsvcarch="amd64"
 zkarch="x86_64"
@@ -75,8 +76,7 @@ fi
 
 ulimit -n 10000
 echo "downloading Apache Bigtop Stack (Hadoop 2.7.3 and Spark $SPARK_VERSION) ......."
-BIGTOP_BASE_URL="https://ci.bigtop.apache.org/job/Bigtop-trunk-packages/COMPONENTS"
-	
+BIGTOP_BASE_URL="https://ci.bigtop.apache.org/view/Packages/job/Bigtop-trunk-packages-by-jenkins/COMPONENTS"
 pkg_dir=$PWD/pkg_bigtop
 #if [ ! -d $pkg_dir  ] ; then
 	rm -rf $pkg_dir; mkdir $pkg_dir; cd $_
@@ -90,7 +90,7 @@ echo "download complete ......."
 cd $pkg_dir
 if [ $ID = "ubuntu" ]; then
    install_package $BIGTOP_BASE_URL=bigtop-utils,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-utils bigtop-utils_1.2.0-1_all
-   install_package $BIGTOP_BASE_URL=bigtop-groovy,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-groovy bigtop-groovy_2.4.4-1_all
+   install_package $BIGTOP_BASE_URL=bigtop-groovy,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-groovy bigtop-groovy_2.4.10-1_all
    install_package $BIGTOP_BASE_URL=bigtop-jsvc,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-jsvc bigtop-jsvc_1.0.15-1_$jsvcarch
    install_package $BIGTOP_BASE_URL=bigtop-tomcat,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-tomcat  bigtop-tomcat_6.0.45-1_all
    install_package $BIGTOP_BASE_URL=zookeeper,OS=$BIGTOP_OS_TYPE/lastSuccessfulBuild/artifact/output/zookeeper zookeeper_3.4.6-1_all
@@ -99,7 +99,7 @@ if [ $ID = "ubuntu" ]; then
 else
    rm -f *.src.rpm
    yum install -y -q $BIGTOP_BASE_URL=bigtop-utils,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-utils/noarch/bigtop-utils-1.2.0-1.fc25.noarch.rpm
-   yum install -y -q $BIGTOP_BASE_URL=bigtop-groovy,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-groovy/noarch/bigtop-groovy-2.4.4-1.fc25.noarch.rpm
+   yum install -y -q $BIGTOP_BASE_URL=bigtop-groovy,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-groovy/noarch/bigtop-groovy-2.4.10-1.fc25.noarch.rpm
    yum install -y -q $BIGTOP_BASE_URL=bigtop-jsvc,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-jsvc/ppc64le/bigtop-jsvc-1.0.15-1.fc25.ppc64le.rpm
    yum install -y -q $BIGTOP_BASE_URL=bigtop-tomcat,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/bigtop-tomcat/noarch/bigtop-tomcat-6.0.45-1.fc25.noarch.rpm
    yum install -y -q $BIGTOP_BASE_URL=zookeeper,OS=$BIGTOP_OS_TYPE$arch/lastSuccessfulBuild/artifact/output/zookeeper/ppc64le/zookeeper-3.4.6-1.fc25.$zkarch.rpm
