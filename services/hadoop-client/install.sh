@@ -24,9 +24,11 @@ else
     fi
 fi
 export LC_ALL=C
+
 case ${ID}-${VERSION_ID} in
       ubuntu-*)
         BIGTOP_OS_TYPE="ubuntu-16.04"  
+        wget -O- http://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/GPG-KEY-bigtop | sudo apt-key add -
         touch UBUNTU
         apt-get install -f -y
         apt-get update -qqy
@@ -46,6 +48,7 @@ if [ $HOSTTYPE = "powerpc64le" ] ; then
 	jsvcarch="ppc64el"
         zkarch="ppc64le"
 fi
+wget -O /etc/apt/sources.list.d/bigtop-1.2.0.list https://www.apache.org/dist/bigtop/bigtop-1.2.0/repos/ubuntu16.04.ppc64le/bigtop.list
 
 if [[ $SPARK_VERSION == 1* ]]; then 
    SPARK="spark1" 
