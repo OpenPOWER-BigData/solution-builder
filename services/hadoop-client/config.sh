@@ -62,6 +62,7 @@ SPARK_LOG_DIR=hdfs:///history_logs
 
 sed -i '/SPARK_HISTORY_OPTS/d' /etc/spark/conf/spark-env.sh
 echo "export SPARK_MASTER_IP=$SPARK_MASTER" >>/etc/spark/conf/spark-env.sh
+echo "export SPARK_MASTER_URL=spark://\$SPARK_MASTER_IP:\$SPARK_MASTER_PORT" >>/etc/spark/conf/spark-env.sh
 echo "export SPARK_HISTORY_OPTS=\"\$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=$SPARK_LOG_DIR -Dspark.history.ui.port=18082\"" >>/etc/spark/conf/spark-env.sh
 
 cp /etc/spark/conf/spark-defaults.conf.template /etc/spark/conf/spark-defaults.conf

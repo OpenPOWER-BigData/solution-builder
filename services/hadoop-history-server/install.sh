@@ -1,4 +1,10 @@
 #!/bin/bash
-set -ex
+#set -ex
+if [ -f UBUNTU ]; then
+   RUNLEVEL=1 apt-get -qqy install hadoop-mapreduce-historyserver
 
-# add additional installation tools for namenode node here
+else
+   yum install -y -q hadoop-mapreduce-historyserver
+fi
+
+
