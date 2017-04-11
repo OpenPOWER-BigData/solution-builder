@@ -27,6 +27,9 @@ else
     fi
 fi
 export LC_ALL=C
+if [ $HOSTTYPE = "powerpc64le" ] ; then
+      repo_arch=".ppc64le"
+fi
 
 case ${ID}-${VERSION_ID} in
       ubuntu-*)
@@ -36,18 +39,15 @@ case ${ID}-${VERSION_ID} in
         apt-get install -f -y
         apt-get update -qqy
         apt-get install -qqy python wget fuse openssl liblzo2-2 openjdk-8-jdk unzip netcat-openbsd apt-utils openssh-server libsnappy1v5 libsnappy-java ntp cpufrequtils curl
-        if [ $HOSTTYPE = "powerpc64le" ] ; then
-           repo_arch=".ppc64le"
-        fi
         wget -O /etc/apt/sources.list.d/bigtop-1.2.0.list https://www.apache.org/dist/bigtop/bigtop-1.2.0/repos/ubuntu16.04$repo_arch/bigtop.list
         apt-get update -qqy
       ;;
       *)
         BIGTOP_OS_TYPE="fedora-25"
-        yum -y -q update
+#      yum -y -q update
         yum install -y -q sudo hostname gzip wget vim java-1.8.0-openjdk-devel openssl zlib compat-libstdc++-33 snappy openssh-clients openssh-server initscripts nc unzip fuse curl
-        NOARCH="noarch"
-       
+        wget -O /etc/yum.repos.d/bigtop.repo http://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/fedora25.$repo_arch/bigtop.repo
+        NOARCH="noarch"       
 esac
 
 if [[ $SPARK_VERSION == 1* ]]; then 
@@ -68,11 +68,11 @@ ulimit -n 10000
 if [ $ID = "ubuntu" ]; then
    RUNLEVEL=1 apt-get -qqy install hadoop-client hadoop-conf-pseudo
    RUNLEVEL=1 apt-get install -qqy spark-core 
-#  apt-get install -qqy spark-external spark-datanucleus spark-extras spark-history-server spark-thriftserver spark-yarn-shuffle
+   apt-get install -qqy spark-external spark-datanucleus spark-history-server spark-thriftserver spark-yarn-shuffle
 else
    rm -f *.src.rpm
-   yum install -y -q hadoop-client
-   yum install -y -q spark-*.rpm
+   yum install -y -q hadoop-client hadoop-conf-pseudo
+   yum install -y -q spark-core spark-external spark-datanucleus spark-history-server spark-thriftserver spark-yarn-shuffle
 fi
 
 cd .. 
