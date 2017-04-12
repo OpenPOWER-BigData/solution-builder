@@ -46,7 +46,7 @@ case ${ID}-${VERSION_ID} in
         BIGTOP_OS_TYPE="fedora-25"
 #      yum -y -q update
         yum install -y -q sudo hostname gzip wget vim java-1.8.0-openjdk-devel openssl zlib compat-libstdc++-33 snappy openssh-clients openssh-server initscripts nc unzip fuse curl
-        wget -O /etc/yum.repos.d/bigtop.repo http://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/fedora25.$repo_arch/bigtop.repo
+        wget -O /etc/yum.repos.d/bigtop.repo http://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/fedora25$repo_arch/bigtop.repo
         NOARCH="noarch"       
 esac
 
