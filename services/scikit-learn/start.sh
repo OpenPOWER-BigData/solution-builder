@@ -1,6 +1,6 @@
 #!/bin/bash
 set -ex
-cd /WORK_DIR
+cd /work_dir
 jupyter notebook --ip=`hostname -i` --no-browser --allow-root
  
 

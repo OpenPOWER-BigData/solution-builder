@@ -6,4 +6,4 @@ if [ "$HOSTTYPE" = "powerpc64le"  ]; then
 fi
 base_image=ynwa/ubuntu_dev
 #base_image=ubuntu_dev
-docker run -d --privileged -v `pwd`:/bigtop --name master -h master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh; service ssh start;  while true; do sleep 1000; done"
+docker run -d --privileged -e WORK_DIR=work_dir -v `pwd`:/work_dir --name master -h master $base_image$img_arch:16.04 bash -l -c "./work_dir/test/docker_cluster_init.sh; service ssh start;  while true; do sleep 1000; done"

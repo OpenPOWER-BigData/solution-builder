@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-SIZE=10000
+SIZE=1000
 NUM_MAPS=100
 NUM_REDUCES=100
 IN_DIR=in_dir
