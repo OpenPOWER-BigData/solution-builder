@@ -1,3 +1,3 @@
 #!/bin/bash
-set -ex
-
+#set -ex
+cat jupyter_pid | xargs kill -9
