@@ -5,4 +5,5 @@ hadoop-datanode,hadoop-client,172.17.0.2,ubuntu,master,master,master
 hadoop-nodemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
 spark-master,hadoop-client,172.17.0.2,ubuntu,master,master,master
 spark-worker,hadoop-client,172.17.0.2,ubuntu,master,master,master
-zeppelin,hadoop-client,172.17.0.2,ubuntu,master,master,master
+#zeppelin,hadoop-client,172.17.0.2,ubuntu,master,master,master
+scikit-learn,hadoop-client,172.17.0.2,ubuntu,master,master,master
