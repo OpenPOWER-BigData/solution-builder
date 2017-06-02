@@ -4,7 +4,7 @@ NC='\033[0m' # No Color
 RED='\033[0;31m'
 service=jupyter
 result=`pgrep jupyter`
-echo $result > jupyter_pid
+#echo $result > jupyter_pid
 if [  ! -z  "$result" ]; then
 	printf "$service is ${GREEN}Active${NC}\n"
 

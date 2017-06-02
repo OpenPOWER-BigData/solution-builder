@@ -1,9 +1,13 @@
 #!/bin/bash
 bd_user=$1
-set -ex
-#jupyter toree install --spark_home=$SPARK_HOME --spark_opts='--master=spark://master:7077'
-jupyter toree install --spark_home=$SPARK_HOME
-jupyter toree install --interpreters=PySpark
-#cd /$work_dir
-su $bd_user -c "jupyter notebook --ip=`hostname -i` --port 9999 --no-browser --notebook-dir=/home/$bd_user &"
+
+export PYSPARK_PYTHON=python3 pyspark
+export PYSPARK_DRIVER_PYTHON=jupyter 
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+
+if [ -z "$SPARK_HOME" ]; then
+  su $bd_user -c "jupyter notebook  2> /dev/null &"
+else
+  su $bd_user -c "pyspark  2> /dev/null &"
+fi
 

@@ -22,3 +22,15 @@ add_element(){
     sed -i -e "/<\/configuration>/ s/.*/${C}\n&/" $xml_file
 }
 
+echo "export PYSPARK_PYTHON=python3 pyspark" >> /etc/environment
+echo "export PYSPARK_DRIVER_PYTHON=jupyter" >> /etc/environment
+echo "export PYSPARK_DRIVER_PYTHON_OPTS='notebook'" >> /etc/environment
+pushd /home/$BD_USER
+su $BD_USER -c "yes | jupyter notebook --generate-config"
+jupyter_file=/home/$BD_USER/.jupyter/jupyter_notebook_config.py
+echo "c.NotebookApp.port = 9999" >> $jupyter_file
+echo "c.NotebookApp.ip = '`hostname -i`'" >> $jupyter_file
+echo "c.NotebookApp.open_browser = False" >> $jupyter_file
+echo "c.NotebookApp.notebook_dir = '/home/$BD_USER'" >> $jupyter_file
+
+popd
