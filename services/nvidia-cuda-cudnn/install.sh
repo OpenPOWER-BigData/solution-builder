@@ -15,7 +15,7 @@ cd nvidia-cuda-cudnn
 dpkg -i libcudnn5*deb
 cd ..
 apt-get -yqq update
-wget -q https://download.boulder.ibm.com/ibmdl/pub/software/server/mldl/mldl-repo-local_3.3.0_ppc64el.deb
+wget -q https://download.boulder.ibm.com/ibmdl/pub/software/server/POWER/Linux/mldl/ubuntu/mldl-repo-network_3.4.0_ppc64el.deb
 dpkg -i mldl-repo-local*.deb
 apt-get -y update
 touch cuda_installed
