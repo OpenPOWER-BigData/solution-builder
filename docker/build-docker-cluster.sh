@@ -9,7 +9,7 @@ base_image=ynwa/ubuntu_dev
 docker run -d --privileged -v `pwd`:/bigtop --name master -h master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh; service ssh start;  while true; do sleep 1000; done"
 docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
 docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
-docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
-docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
+#docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
+#docker run -d --privileged -v `pwd`:/bigtop --link master $base_image$img_arch:16.04 bash -l -c "./bigtop/test/docker_cluster_init.sh;service ssh start;  while true; do sleep 1000; done"
 
 
