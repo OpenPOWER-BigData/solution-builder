@@ -66,12 +66,12 @@ fi
 ulimit -n 10000
 
 if [ $ID = "ubuntu" ]; then
-   RUNLEVEL=1 apt-get -qqy install hadoop-client hadoop-conf-pseudo
-   RUNLEVEL=1 apt-get install -qqy spark-core 
+   apt-get -qqy install hadoop-client hadoop-conf-pseudo libhdfs_*
+   apt-get install -qqy spark-core 
    apt-get install -qqy spark-external spark-datanucleus spark-history-server spark-thriftserver spark-yarn-shuffle spark-python
 else
    rm -f *.src.rpm
-   yum install -y -q hadoop-client hadoop-conf-pseudo
+   yum install -y -q hadoop-client hadoop-conf-pseudo libgdfs_*
    yum install -y -q spark-core spark-external spark-datanucleus spark-history-server spark-thriftserver spark-yarn-shuffle spark-python
 fi
 

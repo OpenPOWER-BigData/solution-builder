@@ -32,4 +32,6 @@ echo "c.NotebookApp.ip = '`hostname -i`'" >> $jupyter_file
 echo "c.NotebookApp.open_browser = False" >> $jupyter_file
 echo "c.NotebookApp.notebook_dir = '/home/$BD_USER'" >> $jupyter_file
 echo "source /opt/DL/tensorflow/bin/tensorflow-activate" >> /home/$BD_USER/.bashrc
+echo "source $HADOOP_CONF_DIR/hadoop-env.sh"  >> /home/$BD_USER/.bashrc
+echo "export CLASSPATH=$($HADOOP_HDFS_HOME/bin/hdfs classpath --glob)" >> /home/$BD_USER/.bashrc
 popd
