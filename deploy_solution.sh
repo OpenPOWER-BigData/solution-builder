@@ -24,7 +24,7 @@ SERVICE_HOME_DIR=services
 
 install_service(){
 	service_name=$1
-        dep_service=$2
+        dep_service="$2"
 	bd_ip=$3
 	bd_user=$4
 	service_arg1=$5
@@ -33,9 +33,12 @@ install_service(){
 	server=root@$bd_ip
         
         if [ "$dep_service" != "none" ] ; then
-	        scp -qr $SERVICE_HOME_DIR/$dep_service $server:~/.
-              	ssh $server "$dep_service/install.sh $bd_user  $solution_args" < /dev/null
-               	ssh $server "$dep_service/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
+           for i in $dep_service
+               do
+	        scp -qr $SERVICE_HOME_DIR/$i $server:~/.
+              	ssh $server "$i/install.sh $bd_user  $solution_args" < /dev/null
+               	ssh $server "$i/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
+               done
 	fi
 
 	scp -qr $SERVICE_HOME_DIR/$service_name $server:~/.
@@ -64,10 +67,10 @@ do
   echo "  arg2="$f6
   echo "  arg3="$f7
   echo "************************************** "
-  if [ -z $f2 ]; then 
-     f2="None"
+  if [ -z "$f2" ]; then 
+     f2="none"
   fi
-install_service $f1 $f2 $f3 $f4 $f5 $f6 $f7
+install_service $f1 "$f2" $f3 $f4 $f5 $f6 $f7
 done < "$solution_def_file"
 ./solution_status.sh --sd $solution_def_file
 

@@ -16,7 +16,7 @@ echo "solution definition file="$solution_def_file
 
 remove_service(){
 	service_name=$1
-        dep_service=$2
+        dep_service="$2"
 	bd_ip=$3
 	bd_user=$4
 	server=root@$bd_ip
@@ -24,7 +24,10 @@ remove_service(){
 	ssh $server "$service_name/cleanup.sh" < /dev/null
 	ssh $server rm -rf $service_name < /dev/null
         if [ "$dep_service" != "none" ] ; then
-               	ssh $server "$dep_service/cleanup.sh"     < /dev/null 	
+             for i in $dep_service
+               do
+               	ssh $server "$i/cleanup.sh"     < /dev/null 	
+               done
 	 fi
 }
 
@@ -43,7 +46,7 @@ do
   echo "  Service Location="$f3
   echo "  Service User Name="$f4
   echo "************************************** "
-remove_service $f1 $f2 $f3 $f4 
+remove_service $f1 "$f2" $f3 $f4 
  
 done < "$solution_def_file"
 ./solution_status.sh --sd $solution_def_file

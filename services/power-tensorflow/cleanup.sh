@@ -1,3 +1,3 @@
 #!/bin/bash
-apt-get -yqq purge power-mldl
+apt-get -yqq purge tensorflow
 

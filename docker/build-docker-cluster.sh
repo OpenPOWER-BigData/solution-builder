@@ -12,8 +12,10 @@ case $1 in
         * )
         usage;;
 esac
+echo "cleanng up ......"
 docker ps -aq | xargs docker rm -f
-echo $1
+echo ""
+echo "number of nodes in the cluster="$1
 img_arch=""
 if [ "$HOSTTYPE" = "powerpc64le"  ]; then
    img_arch=_ppc64le

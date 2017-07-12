@@ -15,7 +15,7 @@ echo "solution definition file="$solution_def_file
 
 stop_service(){
 	service_name=$1
-        dep_service=$2
+        dep_service="$2"
 	bd_ip=$3
 	bd_user=$4
 	namenode=$5
@@ -25,7 +25,10 @@ stop_service(){
         
         if [ ! -z $dep_service ] ; then
 #        scp -qr $dep_service $server:~/.
-              	ssh $server "$dep_service/stop.sh" < /dev/null
+              for i in $dep_service
+               do
+              	ssh $server "$i/stop.sh" < /dev/null
+               done
 	fi
 
 	ssh $server "$service_name/stop.sh" < /dev/null
@@ -45,7 +48,7 @@ do
   echo "  Service Location="$f3
   echo "  Service User Name="$f4
   echo "************************************** "
-stop_service $f1 $f2 $f3 $f4 $f5 $f6 $f7 
+stop_service $f1 "$f2" $f3 $f4 $f5 $f6 $f7 
 done < "$solution_def_file"
 ./solution_status.sh --sd $solution_def_file
 
