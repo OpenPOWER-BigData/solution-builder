@@ -62,9 +62,9 @@ OpenPOWER Solution Enablement Kit
 
 Lets Start 
 ========
-###Typical Deployment Flow
+### Typical Deployment Flow
 ![Alt](https://github.com/OpenPOWER-BigData/solution-builder/blob/master/doc/deployment-flow.png)
-###Solution Managment Flow
+### Solution Managment Flow
 ![Alt](https://github.com/OpenPOWER-BigData/solution-builder/blob/master/doc/solution_man.png)
 
 ### Cluster prep
@@ -100,13 +100,13 @@ Workaround: Remove below field from /etc/sudoers on all nodes
 ```
 Defaults requiretty
 ```
-###Installer Node 
-####Node Requirements
+### Installer Node 
+#### Node Requirements
 - Any Linux or OS x system
   * Must have ssh and sshpass installed
   * sshpass for Mac OS x - https://fauxzen.com/installing-sshpass-os-x/   
 - OpenPower or x86 architecture 
-####Installer Node Setup
+#### Installer Node Setup
 - download Solution Builder
 > git clone https://github.com/OpenPOWER-BigData/solution-builder.git 
 - Use the solution_definition_template file to build your own custom solution
