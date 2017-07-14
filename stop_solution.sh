@@ -23,7 +23,7 @@ stop_service(){
 	sparkmaster=$7
 	server=root@$bd_ip
         
-        if [ ! -z $dep_service ] ; then
+        if [ ! -z "$dep_service" ] ; then
 #        scp -qr $dep_service $server:~/.
               for i in $dep_service
                do

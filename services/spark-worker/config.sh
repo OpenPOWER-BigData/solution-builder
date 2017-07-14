@@ -54,7 +54,6 @@ if [ -f $SERVICE_NAME/disk_list ]; then
     sudo chmod -R 1777 /hdd*/spark/*
 fi
 
-
 echo "spark.driver.memory             20g" >>/etc/spark/conf/spark-defaults.conf
 echo "spark.driver.cores                8" >>/etc/spark/conf/spark-defaults.conf
 echo "spark.default.parallelism       480" >>/etc/spark/conf/spark-defaults.conf

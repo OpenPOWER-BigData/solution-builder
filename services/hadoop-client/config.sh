@@ -27,8 +27,9 @@ fi
 
 export HADOOP_PREFIX=/usr/lib/hadoop
 export HADOOP_HOME=$HADOOP_PREFIX
-export JAVA_HOME=`find /usr/lib/jvm -name java*1*8*openjdk-*`
-
+if [ -z "$JAVA_HOME" ]; then
+  export JAVA_HOME=`find /usr/lib/jvm -name java*1*8*openjdk-*`
+fi
 
 echo "export JAVA_HOME=$JAVA_HOME" |  tee -a  /etc/environment $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh $HADOOP_PREFIX/etc/hadoop/yarn-env.sh
 echo "export HADOOP_CONF_DIR=/etc/hadoop/conf"  |  tee -a /etc/environment $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh $HADOOP_PREFIX/etc/hadoop/yarn-env.sh
@@ -61,6 +62,8 @@ sed -i s/localhost/$RESOURCEMANAGER/ /etc/hadoop/conf/mapred-site.xml
 SPARK_LOG_DIR=hdfs:///history_logs
 
 sed -i '/SPARK_HISTORY_OPTS/d' /etc/spark/conf/spark-env.sh
+sed -i '/STANDALONE_SPARK_MASTER_HOST/d' /etc/spark/conf/spark-env.sh
+echo "export STANDALONE_SPARK_MASTER_HOST=$SPARK_MASTER" >> /etc/spark/conf/spark-env.sh
 echo "export SPARK_MASTER_IP=$SPARK_MASTER" >>/etc/spark/conf/spark-env.sh
 echo "export SPARK_MASTER_URL=spark://\$STANDALONE_SPARK_MASTER_HOST:\$SPARK_MASTER_PORT" >>/etc/spark/conf/spark-env.sh
 echo "export SPARK_HISTORY_OPTS=\"\$SPARK_HISTORY_OPTS -Dspark.history.fs.logDirectory=$SPARK_LOG_DIR -Dspark.history.ui.port=18082\"" >>/etc/spark/conf/spark-env.sh
