@@ -72,5 +72,5 @@ do
   fi
 install_service $f1 "$f2" $f3 $f4 $f5 $f6 $f7
 done < "$solution_def_file"
-./solution_status.sh --sd $solution_def_file
+./solution_status --sd $solution_def_file
 
