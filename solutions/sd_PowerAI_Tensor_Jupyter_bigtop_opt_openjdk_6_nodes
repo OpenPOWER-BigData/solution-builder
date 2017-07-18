@@ -38,7 +38,7 @@ spark-worker,power-opt-openjdk hadoop-client,172.17.0.5,ubuntu,master,master,mas
 zeppelin,power-opt-openjdk hadoop-client,172.17.0.6,ubuntu,master,master,master
 #################### PowerAI  #########################
 #nvidia-cuda-cudnn,power-opt-openjdk hadoop-client,172.17.0.7,ubuntu,master,master,master
-power-tensorflow,nvidia-cuda-cudnn power-opt-openjdk hadoop-client,172.17.0.7,ubuntu,master,master,master
+power-tensorflow,nvidia-cuda-cudnn hadoop-client,172.17.0.7,ubuntu,master,master,master
 
 #################### Apache Pig Service  #########################
 # TBD

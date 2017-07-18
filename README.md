@@ -166,7 +166,7 @@ zeppelin,power-opt-openjdk hadoop-client,172.17.0.6,ubuntu,master,master,master
 ### Test Hadoop/Spark Services
 - Test Spark deployment using ssh: **ssh {solution user name}:{namenode IP address} "bash -s" < test/sparkTest.sh**
 ```
-ssh ubuntu@172.17.0.2 "basg -s" < test/sparkTest.sh
+ssh ubuntu@172.17.0.2 "bash -s" < test/sparkTest.sh
 ```
 - Test Hadoop Deployment: **ssh {solution user name}:{namenode IP address} "bash -s" < test/hadoopTest.sh**
 ```

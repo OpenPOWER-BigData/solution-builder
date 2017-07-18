@@ -25,6 +25,7 @@ pushd /home/$BD_USER
 wget https://github.com/aymericdamien/TensorFlow-Examples/archive/master.zip
 unzip master.zip
 rm master.zip
+chown $BD_USER: -R TensorFlow-Examples-master
 su $BD_USER -c "yes | jupyter notebook --generate-config"
 jupyter_file=/home/$BD_USER/.jupyter/jupyter_notebook_config.py
 echo "c.NotebookApp.port = 9999" >> $jupyter_file
@@ -33,5 +34,5 @@ echo "c.NotebookApp.open_browser = False" >> $jupyter_file
 echo "c.NotebookApp.notebook_dir = '/home/$BD_USER'" >> $jupyter_file
 echo "source /opt/DL/tensorflow/bin/tensorflow-activate" >> /home/$BD_USER/.bashrc
 echo "source $HADOOP_CONF_DIR/hadoop-env.sh"  >> /home/$BD_USER/.bashrc
-echo "export CLASSPATH=$($HADOOP_HDFS_HOME/bin/hdfs classpath --glob)" >> /home/$BD_USER/.bashrc
+echo "export CLASSPATH=\$(\$HADOOP_HDFS_HOME/bin/hdfs classpath --glob)" >> /home/$BD_USER/.bashrc
 popd
