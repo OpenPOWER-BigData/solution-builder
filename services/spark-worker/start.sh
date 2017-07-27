@@ -1,5 +1,5 @@
 #!/bin/bash
-service spark-worker start
+service spark-worker restart
 
 
 

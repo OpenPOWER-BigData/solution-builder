@@ -3,20 +3,20 @@
 if [ -f hadoop_client_installed ] ; then
 	exit
 fi
-echo "deploy arguemnt="$@
-for i in "$@"
-do
-    case $i in
-        --spark-version )
-           SPARK_VERSION=$1
-           shift
-           ;;
-        * )
-        shift;;
-    esac
-    shift
-done
-SPARK="spark"
+#echo "deploy arguemnt="$@
+#for i in "$@"
+#do
+#    case $i in
+#        --spark-version )
+#           SPARK_VERSION=$1
+#           shift
+#           ;;
+#        * )
+#        shift;;
+#    esac
+#    shift
+#done
+#SPARK="spark"
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -50,9 +50,9 @@ case ${ID}-${VERSION_ID} in
         NOARCH="noarch"       
 esac
 
-if [[ $SPARK_VERSION == 1* ]]; then 
-   SPARK="spark1" 
-fi
+#if [[ $SPARK_VERSION == 1* ]]; then 
+#   SPARK="spark1" 
+#fi
 
 
 service ntp start

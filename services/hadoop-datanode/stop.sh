@@ -1,4 +1,4 @@
 #!/bin/bash
-set -ex
+#set -ex
 
 service hadoop-hdfs-datanode stop

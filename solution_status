@@ -25,11 +25,12 @@ install_service(){
 	bd_ip=$3
         bd_user=$4
        	server=root@$bd_ip
-            
+        
+        args="$bd_user $service_arg1 $service_arg2 $service_arg3 $solution_args"
         echo "*** Service $service_name status: ***"
         echo "Node IP="$bd_ip
         ssh $server "echo $HOSTTYPE" < /dev/null
-        ssh $server "bash -s" < $SERVICE_HOME_DIR/$service_name/status.sh  $bd_user
+        ssh $server "bash -s" < $SERVICE_HOME_DIR/$service_name/status.sh  $service_name $args
 }
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7

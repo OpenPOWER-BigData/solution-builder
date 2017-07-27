@@ -31,7 +31,7 @@ remove_service(){
 	 fi
 }
 
-./stop_solution.sh --sd $solution_def_file
+./stop_solution --sd $solution_def_file
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7 
 do 

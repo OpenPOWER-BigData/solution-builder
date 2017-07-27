@@ -1,9 +1,10 @@
 #!/bin/bash
-set -ex
-NAMENODE=$1
-RESOURCEMANAGER=$2
-SPARK_MASTER=$3
-BD_USER=$4
+SERVICE_NAME=$1
+BD_USER=$2
+arg1=$3
+arg2=$4
+arg3=$5
+solution_args=$6
 
 change_xml_element() {
     name=$1

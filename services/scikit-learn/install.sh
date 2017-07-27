@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -ex
-set -ex
+
 export LC_ALL=C
 if [ -f /etc/os-release ]; then
     . /etc/os-release

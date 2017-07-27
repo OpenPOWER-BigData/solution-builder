@@ -23,8 +23,7 @@ stop_service(){
 	sparkmaster=$7
 	server=root@$bd_ip
         
-        if [ ! -z "$dep_service" ] ; then
-#        scp -qr $dep_service $server:~/.
+        if [ "$dep_service" != "none" ] ; then
               for i in $dep_service
                do
               	ssh $server "$i/stop.sh" < /dev/null

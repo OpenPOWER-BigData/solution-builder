@@ -31,27 +31,30 @@ install_service(){
 	service_arg2=$6
 	service_arg3=$7
 	server=root@$bd_ip
-        
+        args="$bd_user $service_arg1 $service_arg2 $service_arg3 $solution_args"
+
         if [ "$dep_service" != "none" ] ; then
            for i in $dep_service
                do
 	        scp -qr $SERVICE_HOME_DIR/$i $server:~/.
-              	ssh $server "$i/install.sh $bd_user  $solution_args" < /dev/null
-               	ssh $server "$i/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $solution_args" < /dev/null
+                ssh $server "$i/install.sh $i $args" < /dev/null
+               	ssh $server "$i/config.sh $i $args" < /dev/null
+                ssh $server "$i/start.sh $i $args" < /dev/null
+                ssh $server "$i/status.sh $i $args " < /dev/null
                done
 	fi
 
 	scp -qr $SERVICE_HOME_DIR/$service_name $server:~/.
-	ssh $server "$service_name/install.sh $bd_user $solution_args" < /dev/null
-	ssh $server "$service_name/config.sh $service_arg1 $service_arg2 $service_arg3 $bd_user $service_name $solution_args" < /dev/null
-	ssh $server "$service_name/start.sh $bd_user " < /dev/null
+	ssh $server "$service_name/install.sh $service_name $args" < /dev/null
+	ssh $server "$service_name/config.sh $service_name $args" < /dev/null
+	ssh $server "$service_name/start.sh $service_name $args" < /dev/null
         echo "*** Service $service_name status: ***"
-	ssh $server "$service_name/status.sh $bd_user " < /dev/null
+	ssh $server "$service_name/status.sh $service_name $args " < /dev/null
 	scp -q common/* $server:~/$service
 
 }
 
-while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7
+while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7 f8 f9
 do 
   ## Ignore lines start with "#"
   case $f1 in
@@ -70,7 +73,7 @@ do
   if [ -z "$f2" ]; then 
      f2="none"
   fi
-install_service $f1 "$f2" $f3 $f4 $f5 $f6 $f7
+install_service $f1 "$f2" $f3 $f4 $f5 $f6 $f7 
 done < "$solution_def_file"
 ./solution_status --sd $solution_def_file
 

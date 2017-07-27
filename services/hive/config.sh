@@ -1,8 +1,13 @@
 #!/bin/bash
 set -ex
-NAMENODE=$1
-RESOURCEMANAGER=$2
-BD_USER=$3
+SERVICE_NAME=$1
+BD_USER=$2
+NAMENODE=$3
+RESOURCEMANAGER=$4
+SPARK_MASTER=$5
+solution_args=$6
+MYSQL_ROOT_PAS=$solution_args
+
 change_xml_element() {
     name=$1
     value=$2
@@ -19,4 +24,12 @@ add_element(){
     C=$(echo $CONTENT | sed 's/\//\\\//g')
     sed -i -e "/<\/configuration>/ s/.*/${C}\n&/" $xml_file
 }
+
+mysql -u root -p$MYSQL_ROOT_PAS --execute "CREATE USER '$BD_USER'@'localhost' IDENTIFIED BY '$BD_USER'"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'localhost'"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "CREATE USER '$BD_USER'@'%' IDENTIFIED BY '$BD_USER'"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'%'"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "FLUSH PRIVILEGES"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'localhost' WITH GRANT OPTION"
+mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'%' WITH GRANT OPTION;"
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-service spark-master start
-service spark-history-server start
+service spark-master restart
+service spark-history-server restart
 
 
 

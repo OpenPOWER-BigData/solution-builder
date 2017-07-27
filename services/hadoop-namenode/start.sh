@@ -1,7 +1,11 @@
 #!/bin/bash
 #set -ex
-BD_USER=$1
-BD_PASSWD=$2
+SERVICE_NAME=$1
+BD_USER=$2
+NAMENODE=$3
+RESOURCEMANAGER=$4
+SPARK_MASTER=$5
+solution_args=$6
 
 SUDO=sudo	
 $SUDO  service hadoop-hdfs-namenode restart
