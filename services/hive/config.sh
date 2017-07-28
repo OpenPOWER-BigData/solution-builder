@@ -33,3 +33,8 @@ mysql -u root -p$MYSQL_ROOT_PAS --execute "FLUSH PRIVILEGES"
 mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'localhost' WITH GRANT OPTION"
 mysql -u root -p$MYSQL_ROOT_PAS --execute "GRANT ALL PRIVILEGES ON *.* TO '$BD_USER'@'%' WITH GRANT OPTION;"
 
+export HIVE_HOME=/usr/lib/hive
+export HIVE_CONF_DIR=/etc/hive/conf
+cp /usr/share/java/mysql.jar $HIVE_HOME/lib
+export PATH=$PATH:$HIVE_HOME/bin:$HIVE_HOME/scripts
+chown $BD_USER:hadoop -R $HIVE_CONF_DIR
