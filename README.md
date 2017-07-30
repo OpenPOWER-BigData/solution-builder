@@ -155,13 +155,13 @@ zeppelin,power-opt-openjdk hadoop-client,172.17.0.6,ubuntu,master,master,master
 ```
 ## Solution Management 
 ### Deployment
-- deploy_solution --sd <solution definition file name path> {solution level arguments}. Solution level arguments are vsisble to all install.sh and config.sys scripts
+- deploy_solution.sh --sd <solution definition file name path> {solution level arguments}. Solution level arguments are vsisble to all install.sh and config.sys scripts
 ```
-./deploy_solution --sd solutions/solution_definition_template 
+./deploy_solution.sh --sd solutions/solution_definition_template 
 ```
 ### Status of Services
 ```
-./solution_status --sd solutions/solution_definition_template
+./solution_status.sh --sd solutions/solution_definition_template
 ```
 ### Test Hadoop/Spark Services
 - Test Spark deployment using ssh: **ssh {solution user name}:{namenode IP address} "bash -s" < test/sparkTest.sh**
@@ -174,9 +174,9 @@ ssh ubuntu@172.17.0.2 "bash -s" < test/hadoopTest.sh
 ```
 ### Stop Services
 ```
-./stop_solution --sd <solution definition file name path>
+./stop_solution.sh --sd <solution definition file name path>
 ```
 ### Start Services
 ```
-./start_solution --sd <solution definition file name>
+./start_solution.sh --sd <solution definition file name>
 ```
