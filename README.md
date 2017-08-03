@@ -1,4 +1,5 @@
 ![Alt](http://www.scientificcomputing.com/sites/scientificcomputing.com/files/openpower_foundation_ml.jpg#right)
+
 OpenPOWER Solution Development Kit
 ====================================
 ## Solution Builder - A Service Oriented Orchestrator
