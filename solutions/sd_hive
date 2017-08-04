@@ -1,0 +1,2 @@
+#Service Name, required service, target node IP address, target node BD user name, namenode hostname, resourcemanager hostname, spark-master hostname 
+hive,hadoop-client,172.17.0.2,ubuntu,master,master,master
