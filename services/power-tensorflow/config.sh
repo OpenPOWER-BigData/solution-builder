@@ -23,6 +23,9 @@ add_element(){
     sed -i -e "/<\/configuration>/ s/.*/${C}\n&/" $xml_file
 }
 pushd /home/$BD_USER
+su $BD_USER -c "python2 -m pip install ipykernel"
+su $BD_USER -c "python2 -m ipykernel install --user"
+
 wget https://github.com/aymericdamien/TensorFlow-Examples/archive/master.zip
 unzip master.zip
 rm master.zip
