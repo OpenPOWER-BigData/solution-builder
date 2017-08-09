@@ -40,7 +40,7 @@ case ${ID}-${VERSION_ID} in
         apt-get update -qqy
         apt-get install -qqy python wget fuse openssl liblzo2-2 openjdk-8-jdk unzip netcat-openbsd apt-utils openssh-server libsnappy1v5 libsnappy-java ntp cpufrequtils curl
         wget -O /etc/apt/sources.list.d/bigtop-1.2.0.list https://www.apache.org/dist/bigtop/bigtop-1.2.0/repos/ubuntu16.04$repo_arch/bigtop.list
-        apt-get --allow-unauthenticated update -qqy
+        apt-get update -qqy
       ;;
       *)
         BIGTOP_OS_TYPE="fedora-25"

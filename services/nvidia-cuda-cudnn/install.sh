@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+#set -ex
 if [ -f cuda_installed ] ; then
 	exit
 fi
