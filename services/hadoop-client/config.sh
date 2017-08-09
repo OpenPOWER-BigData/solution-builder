@@ -84,6 +84,8 @@ add_element "yarn.resourcemanager.hostname" "$RESOURCEMANAGER" "/etc/hadoop/conf
 add_element "yarn.resourcemanager.address" "$RESOURCEMANAGER:8032" "/etc/hadoop/conf/yarn-site.xml"
 add_element "yarn.resourcemanager.resource-tracker.address" "$RESOURCEMANAGER:8031" "/etc/hadoop/conf/yarn-site.xml"
 add_element "yarn.resourcemanager.scheduler.address" "$RESOURCEMANAGER:8030" "/etc/hadoop/conf/yarn-site.xml"
+add_element "yarn.nodemanager.pmem-check-enabled" "false" "/etc/hadoop/conf/yarn-site.xml"
+add_element "yarn.nodemanager.vmem-check-enabled" "false" "/etc/hadoop/conf/yarn-site.xml"
 add_element "dfs.namenode.datanode.registration.ip-hostname-check" "false" "/etc/hadoop/conf/hdfs-site.xml"
 echo "*                soft    nofile          100000" | tee -a  /etc/security/limits.conf
 echo "*                hard    nofile          100000" | tee -a  /etc/security/limits.conf
