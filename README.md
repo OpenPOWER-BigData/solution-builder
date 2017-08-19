@@ -95,6 +95,32 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub user@host
 ssh user@host
 ```
 
+Copy authorized_keys to each node
+
+- Allow login as root ssh (necessary in some scenarios)
+
+
+
+Enabling the root account:
+```
+sudo -i
+```
+To enable the Root account (i.e. set a password) use:
+```
+sudo passwd root
+```
+Allow root login
+```
+sudo vi /etc/ssh/sshd_config
+
+change line to PermitRootLogin yes
+```
+Restart ssh service
+```
+sudo service sshd restart
+```
+It is recommended to disable this again after installation
+
 **IMPORTANT - The username must match service's username defined in the solution definition file **
 - Ensure the root password is the same on all cluster nodes
 - Ensure the username (i.e. bd_user) has the same password on all cluster node.
