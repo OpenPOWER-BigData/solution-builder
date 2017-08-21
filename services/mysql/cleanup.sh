@@ -4,10 +4,11 @@ rm ${PWD##*/}-installed
 UBUNTU=`cat /etc/*-release | grep ubuntu`
 
 if [ ! -z  "$UBUNTU" ]; then
-   apt-get purge -y mysql-server 
-   apt autoremove
+   sudo apt-get purge -y mysql-server 
+   sudo apt-get autoremove
+   sudo apt-get autoclean
 else 
-  echo "TBD" 
+   yum remove mysql mysql-server
 fi
 
 
