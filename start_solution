@@ -26,7 +26,7 @@ start_service(){
         if [ ! -z "$dep_service" ] ; then
              for i in $dep_service
                do
-	        scp -qr $i $server:~/.              
+	        # scp -qr $i $server:~/.              
               	ssh $server "$i/start.sh" < /dev/null
                done
 	fi
