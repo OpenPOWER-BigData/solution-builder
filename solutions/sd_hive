@@ -1,0 +1,2 @@
+mysql,hadoop-client,172.17.0.2,bd_user,master,master,master
+hive,hadoop-client,172.17.0.2,bd_user,master,master,master
