@@ -1,0 +1,47 @@
+# A Solution Definition File is a collection of services and relationships, designed to
+# give you an entire deployment in one easy to use step. Defines the topology of the solution.
+# Each line represent a service and is consist of comma-separated fields:
+# 1) Service Name
+# 2) Space separated list of required services to be installed on the same node
+# 3) Target node's IP/Hostname
+# 4) Service's user name (not root) 
+# 5) Configuration and connections values for the service, must be comma-separated.
+# Example: Apache Bigtop Deployment (Hadoop, Spark, Zeppelin, PowerAI-Tensorflow, optimized openjdk, and jupyter)
+#################### Master node #############################################################
+#### Hadoop master node includes namenode, resourcemanager, and spark-master services      ###
+#### All Hadoop services have depdency on power-opt-openjdk hadoop-client service                            ###
+#### Next three arguments must be the hostname of the master node                          ###
+##############################################################################################
+hadoop-namenode,power-opt-openjdk hadoop-client,172.17.0.2,ubuntu,master,master,master
+hadoop-resourcemanager,power-opt-openjdk hadoop-client,172.17.0.2,ubuntu,master,master,master
+spark-master,power-opt-openjdk hadoop-client,172.17.0.2,ubuntu,master,master,master
+
+#################### Worker Node 1 ###########################################################
+#### Includes datanode, nodemanager, and spark worker services                             ###
+#### Next three arguments must be the hostname of the master node                          ### 
+##############################################################################################
+hadoop-datanode,power-opt-openjdk hadoop-client,172.17.0.3,ubuntu,master,master,master
+hadoop-nodemanager,power-opt-openjdk hadoop-client,172.17.0.3,ubuntu,master,master,master
+spark-worker,power-opt-openjdk hadoop-client,172.17.0.3,ubuntu,master,master,master
+
+#################### Worker Node 2 #############################
+hadoop-datanode,power-opt-openjdk hadoop-client,172.17.0.4,ubuntu,master,master,master
+hadoop-nodemanager,power-opt-openjdk hadoop-client,172.17.0.4,ubuntu,master,master,master
+spark-worker,power-opt-openjdk hadoop-client,172.17.0.4,ubuntu,master,master,master
+
+#################### Worker Node 3 #############################
+hadoop-datanode,power-opt-openjdk hadoop-client,172.17.0.5,ubuntu,master,master,master
+hadoop-nodemanager,power-opt-openjdk hadoop-client,172.17.0.5,ubuntu,master,master,master
+spark-worker,power-opt-openjdk hadoop-client,172.17.0.5,ubuntu,master,master,master
+
+#################### Apache Zeppelin Serivce  #####################
+zeppelin,power-opt-openjdk hadoop-client,172.17.0.6,ubuntu,master,master,master
+#################### PowerAI  #########################
+#nvidia-cuda-cudnn,power-opt-openjdk hadoop-client,172.17.0.7,ubuntu,master,master,master
+power-tensorflow,nvidia-cuda-cudnn hadoop-client,172.17.0.7,ubuntu,master,master,master
+
+#################### Apache Pig Service  #########################
+# TBD
+#################### Apache Tez Service  #########################
+# TBD
+

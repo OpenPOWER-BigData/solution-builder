@@ -1,0 +1,2 @@
+./stop_solution $@
+./start_solution $@

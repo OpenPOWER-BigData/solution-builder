@@ -1,7 +1,0 @@
-#Service Name,target node IP address, target node BD user name, namenode hostname, resourcemanager hostname, spark-master hostname 
-hadoop-namenode,hadoop-client,172.17.0.2,ubuntu,master,master,master
-hadoop-resourcemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
-hadoop-datanode,hadoop-client,172.17.0.2,ubuntu,master,master,master
-hadoop-nodemanager,hadoop-client,172.17.0.2,ubuntu,master,master,master
-spark-master,hadoop-client,172.17.0.2,ubuntu,master,master,master
-spark-worker,hadoop-client,172.17.0.2,ubuntu,master,master,master

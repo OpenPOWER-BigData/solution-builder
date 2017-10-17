@@ -1,0 +1,44 @@
+# A Solution Definition File is a collection of services and relationships, designed to
+# give you an entire deployment in one easy to use step. Defines the topology of the solution.
+# Each line represent a service and is consist of comma-separated fields:
+# 1) Service Name
+# 2) Space separated list of additional required services to be installed on the same node
+# 3) Target node's IP/Hostname
+# 4) Service's user name (not root) 
+# 5) Configuration and connections values for the service, must be comma-separated.
+# Example: Apache Bigtop Deployment
+#################### Master node #############################################################
+#### Hadoop master node includes namenode, resourcemanager, and spark-master services      ###
+#### All Hadoop services have dependency on hadoop-client service                            ###
+#### Next three arguments must be the hostname of the master node                          ###
+##############################################################################################
+hadoop-namenode,hadoop-client,172.17.0.2,bd_user,master,master,master
+hadoop-resourcemanager,hadoop-client,172.17.0.2,bd_user,master,master,master
+spark-master,hadoop-client,172.17.0.2,bd_user,master,master,master
+
+#################### Worker Node 1 ###########################################################
+#### Includes datanode, nodemanager, and spark worker services                             ###
+#### Next three arguments must be the hostname of the master node                          ### 
+##############################################################################################
+hadoop-datanode,hadoop-client,172.17.0.3,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.3,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.3,bd_user,master,master,master
+
+#################### Worker Node 2 #############################
+hadoop-datanode,hadoop-client,172.17.0.4,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.4,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.4,bd_user,master,master,master
+
+#################### Worker Node 3 #############################
+hadoop-datanode,hadoop-client,172.17.0.5,bd_user,master,master,master
+hadoop-nodemanager,hadoop-client,172.17.0.5,bd_user,master,master,master
+spark-worker,hadoop-client,172.17.0.5,bd_user,master,master,master
+
+#################### Apache Zeppelin Serivce  #####################
+zeppelin,hadoop-client,172.17.0.6,bd_user,master,master,master
+#################### Apache Hive Service  #########################
+# TBD
+#################### Apache Pig Service  #########################
+# TBD
+#################### Apache Tez Service  #########################
+# TBD

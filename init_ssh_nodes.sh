@@ -1,13 +1,19 @@
 #!/bin/bash
 #set -ex
-input=$1
+usage() {
+    echo "usage: $(basename $0) --sd <solution definition file name> "
+    exit 1;
+}
 
-#sudo apt-get install -y sshpass
-if [ -z $input ]; then 
-   echo "ERROR: missing argument, please add solution defintion file name"
-   exit 1
-fi
-
+while (( $# >= 0 )); do
+    case "$1" in
+        --sd ) solution_def_file=$2 
+        break;
+        ;;
+        * )    usage ;;
+    esac
+    usage
+done
 init_ssh() {
   user_name=$1
   ip_address=$2
@@ -15,21 +21,20 @@ init_ssh() {
   sshpass -p $password ssh $user_name@$ip_address "mkdir -p .ssh" < /dev/null
   cat ~/.ssh/id_rsa.pub | sshpass -p $password ssh $user_name@$ip_address "cat >> .ssh/authorized_keys" 
   sshpass -p $password ssh $user_name@$ip_address "chmod 700 .ssh; chmod 640 .ssh/authorized_keys" < /dev/null
-  #ssh $user_name@$ip_address ls
 }
 
+IFS= read -s  -p " Please enter the root password for the cluster: " rootPass
+printf "\n"
+IFS= read -s  -p " Please enter password of the solution user: " userPass
 
-echo -n " Please enter the root password for the cluser: "
-read rootPass
-echo -n " Please enter the user password for the cluser: "
-read userPass
-
+echo "Thanks"
 
 while IFS=',' read -r f1 f2 f3 f4 f5 f6 f7 f8
 do 
   ## Ignore lines start with "#"
   case $f1 in
         \#*) continue;;
+        "") continue;;
   esac
   echo "Service Name="$f1
   echo "  Service Location="$f3
@@ -41,4 +46,4 @@ do
   ssh -q $f4@$f3 exit < /dev/null
   echo "testing ssh connection to IP $f4@$f3 ... result=$?"
 
-done < "$input"
+done < "$solution_def_file"
